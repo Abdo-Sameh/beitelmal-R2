@@ -1,0 +1,41 @@
+{
+  "project_info": {
+    "project_number": "763611652195",
+    "firebase_url": "https://beitelmal-9a894.firebaseio.com",
+    "project_id": "beitelmal-9a894"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:763611652195:android:eb7a299db1daa920",
+        "android_client_info": {
+          "package_name": "com.test.beitelmal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "763611652195-top5gmr5nj6s0g5m7uu9lg8muvadmdgi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuT1uygodsTMdKP7YlrT3mKVbRQpsswx4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

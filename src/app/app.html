@@ -1,0 +1,27 @@
+<ion-menu side="right" [content]="content">
+  <ion-header>
+    <ion-toolbar>
+
+      <ion-title *ngIf="timer != 0" style="text-align:center">باقي {{ timer }} يوم علي تجديد الباقة</ion-title>
+      <ion-title *ngIf="timer == 0" style="text-align:center"></ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+      <div class="" style="min-height:17px;background-size: cover;">
+        </div>
+        <div class="menu_items">
+            <div class="container">
+               <ion-list>
+                 <div *ngFor="let p of pages">
+                   <button menuClose ion-item  class="menu_items" *ngIf="p.login == false || (getLoggedIn() == '1' && p.login == true)"  (click)="openPage(p)">
+                    <span>{{ p.title }}</span>
+                 </button>
+                </div>
+              </ion-list>
+            </div>
+          </div>
+  </ion-content>
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

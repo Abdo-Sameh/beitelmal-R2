@@ -1,0 +1,125 @@
+<!--
+  Generated template for the RegisterationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+    <header class="header">
+
+      <a (click)="openMenu()" class="primary-nav-trigger">
+			<span class="menu-icon"></span>
+		</a>
+      <div class="logo"><a href="index.html"><img src="assets/images/logo.png" alt="Logo"></a></div>
+
+    </header>
+
+
+
+<ion-content>
+
+  <section class="intro-pages">
+    <div class="intro-box">
+      <h1>تسجيل حساب جديد</h1>
+    </div>
+  </section>
+
+  <div class="cd-form is-visible">
+
+    <div class="cd-plan-info">
+      <!-- content will be loaded using jQuery - according to the selected plan -->
+    </div>
+
+    <div class="cd-more-info">
+      <h3>تحتاج مساعدة؟</h3>
+      <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن ال</p>
+    </div>
+
+    <form action="">
+      <fieldset>
+        <!-- <legend>تسجيل حساب جديد</legend> -->
+
+        <div class="half-width">
+          <label for="userName">إسم المستخدم</label>
+          <input type="text" [(ngModel)]='name' [ngModelOptions]="{ standalone :true}" id="userName" name="userName">
+        </div>
+
+        <div class="half-width">
+          <label for="userEmail">البريد الإلكرتونى</label>
+          <input type="email" [(ngModel)]='email' [ngModelOptions]="{ standalone :true}" id="userEmail" name="userEmail">
+        </div>
+
+        <div class="half-width">
+          <label for="userPhone">رقم الهاتف</label>
+          <input type="text" [(ngModel)]='phone' [ngModelOptions]="{ standalone :true}" id="userPhone" name="userPhone">
+        </div>
+
+        <div class="half-width">
+          <label for="packages">إختر الباقة</label>
+          <span class="cd-select">
+            <select name="packages" [(ngModel)]='package_id' [ngModelOptions]="{ standalone :true}" id="packages">
+              <option value="0" disabled selected> أختر الباقة</option>
+              <option *ngFor="let package of packages;" value="{{package.id}}">{{ package.name }} - {{ package.price }}$</option>
+
+            </select>
+          </span>
+        </div>
+
+        <div class="half-width">
+          <label for="shareStatu">اختر نوع الإشتراك</label>
+          <span class="cd-select">
+            <select name="stock_type" [(ngModel)]='stock_type' [ngModelOptions]="{ standalone :true}" id="packages">
+              <option value="0" disabled selected>اختر نوع الإشتراك</option>
+              <option value="0">الأسهم الشرعية فقط</option>
+              <option value="1">كل الأسهم</option>
+            </select>
+          </span>
+        </div>
+
+        <div class="half-width">
+          <label for="country">البلد</label>
+          <span class="cd-select">
+            <select name="country" [(ngModel)]='country_id' [ngModelOptions]="{ standalone :true}" id="country">
+              <option value="0" disabled selected> أختر  البلد</option>
+              <option *ngFor="let country of countries;" value="{{country.id}}">{{ country.name }}</option>
+
+            </select>
+          </span>
+        </div>
+
+        <div class="half-width">
+          <label for="country">نوع العميل</label>
+          <span class="cd-select">
+            <select name="member_type" [(ngModel)]='member_type' [ngModelOptions]="{ standalone :true}" id="country">
+              <option value="0" disabled selected>اختر نوع العميل</option>
+              <option value="r">عميل توصيات</option>
+              <option value="w">ادارة حافظة</option>
+            </select>
+          </span>
+        </div>
+
+        <div class="half-width">
+          <label for="userPassword">كلمة المرور</label>
+          <input type="password" [(ngModel)]='password' [ngModelOptions]="{ standalone :true}" id="userPassword" name="userPassword">
+        </div>
+
+        <div class="half-width">
+          <label for="userPasswordRepeat">تأكيد كلمة المرور</label>
+          <input type="password" [(ngModel)]='password_confirm' [ngModelOptions]="{ standalone :true}" id="userPasswordRepeat" name="userPasswordRepeat">
+        </div>
+
+      </fieldset>
+
+      <fieldset>
+        <div>
+          <input (click)="register(name, email, phone, country_id, member_type, package_id, password, stock_type)" type="submit" value="إنشاء حساب" style="margin-right: 7%;">
+          <input  (click)="homePage()" type="submit" value="رجوع" style="margin-right: 28%;">
+        </div>
+
+      </fieldset>
+    </form>
+
+  </div> <!-- .cd-form -->
+
+</ion-content>

@@ -1,0 +1,7 @@
+{
+  "name": "beitelmal",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

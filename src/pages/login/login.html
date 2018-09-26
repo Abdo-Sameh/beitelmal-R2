@@ -1,0 +1,55 @@
+<header class="header">
+<a (click)="openMenu()" class="primary-nav-trigger">
+    <span class="menu-icon"></span>
+  </a>
+<!-- primary-nav-trigger -->
+<div class="logo"><a href="index.html"><img src="assets/images/logo.png" alt="Logo"></a></div>
+</header>
+
+
+
+<ion-content>
+
+  <section class="intro-pages">
+    <div class="intro-box">
+      <h1>تسجيل الدخول</h1>
+    </div>
+  </section>
+
+  <div class="cd-form is-visible">
+
+    <div class="cd-plan-info">
+      <!-- content will be loaded using jQuery - according to the selected plan -->
+    </div>
+
+
+    <form action="">
+      <fieldset>
+        <!-- <legend>تسجيل حساب جديد</legend> -->
+
+        <div class="half-width">
+          <label for="userEmail">البريد الإلكرتونى</label>
+          <input type="email" [(ngModel)]='email' [ngModelOptions]="{ standalone :true}" id="userEmail" name="userEmail">
+        </div>
+
+        <div class="half-width">
+          <label for="userPassword">كلمة المرور</label>
+          <input type="password" [(ngModel)]='password' [ngModelOptions]="{ standalone :true}" id="userPassword" name="userPassword">
+        </div>
+
+
+
+      </fieldset>
+
+      <fieldset>
+        <div>
+          <input (click)="login()" type="submit" value="تسجيل الدخول" style="float: right;">
+          <input (click)="homePage()" type="submit" value="رجوع" style="margin-right: 40px;">
+        </div>
+      </fieldset>
+    </form>
+
+  </div> <!-- .cd-form -->
+
+
+</ion-content>

@@ -1,0 +1,32 @@
+page-services {
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .primary-nav li {
+    font-size: 22px;
+  }
+
+  .missions {
+    background-size: cover;
+  }
+
+  .missions h3 {
+    margin-bottom: 20px;
+    color: #AAA;
+  }
+
+  li,
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .missions ul li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-right: 30px;
+  }
+}

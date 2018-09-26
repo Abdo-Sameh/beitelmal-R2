@@ -1,0 +1,203 @@
+<!--
+  Generated template for the ShortRecommendationsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <header class="header">
+
+    <a (click)="openMenu()" class="primary-nav-trigger">
+			<span class="menu-icon"></span>
+		</a>
+    <!-- primary-nav-trigger -->
+
+    <div class="logo"><a href="index.html"><img src="assets/images/logo.png" alt="Logo"></a></div>
+  </header>
+
+
+</ion-header>
+
+
+<ion-content>
+  <section class="intro-pages">
+    <div class="intro-box">
+      <h1>توصيات قصيرة المدى</h1>
+    </div>
+  </section>
+
+  <main class="main-content">
+    <div class="container">
+      <div class="col-sm-6 block">
+        <div class="result">
+          <h3>نتائج توصيات شهر May</h3>
+          <ul>
+            <li><span>إجمالي عدد التوصيات : </span>{{ results.recommendations_all }}</li>
+            <li><span>عدد التوصيات المحققة : </span>{{ results.recommendations_win }}</li>
+            <li><span>عدد التوصيات ايقاف الخسارة : </span>{{ results.recommendations_lose }}</li>
+            <li><span>متوسط ربح التوصية الواحدة : </span>{{ results.average_profit }}</li>
+            <li><span>عدد التوصيات المفتوحة : </span>{{ results.recommendations_open }}</li>
+          </ul>
+        </div>
+      </div>
+      <div *ngFor="let recommend of recommendations; let i = index;" id="no-more-tables">
+        <table class="col-md-12 table-bordered table-striped table-condensed cf">
+          <thead class="cf">
+            <tr>
+              <th>#</th>
+              <th>السهم</th>
+              <th class="numeric">كود السهم</th>
+              <th class="numeric">تاريخ الشراء</th>
+              <th class="numeric">سعر الشراء</th>
+              <th class="numeric">تاريخ البيع</th>
+              <th class="numeric">يعر البيع</th>
+              <th class="numeric">الحاله</th>
+              <th class="numeric">نسبة الربح / الخسارة</th>
+              <th class="numeric">المزيد</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-title="#">{{ i + 1 }}</td>
+              <td data-title="السهم">{{ recommend.recommendation_name }}</td>
+              <td data-title="كود السهم" class="numeric">{{ recommend.code_name }}</td>
+              <td data-title="تاريخ الشراء" class="numeric">{{ recommend.created2_at }}</td>
+              <td data-title="سعر الشراء" class="numeric">{{ recommend.buyPrice }}</td>
+              <td data-title="تاريخ البيع" class="numeric">{{ recommend.updated2_at }}</td>
+              <td data-title="سعر البيع" class="numeric">{{ recommend.sellPrice }}</td>
+              <!-- <td data-title="الحاله" class="numeric">{{  }}</td> -->
+              <!-- <td data-title="نسبة الربح / الخسارة" class="numeric">+6.32 %</td> -->
+              <td data-title="المزيد" class="numeric"><a class="btn-show-hide">+</a></td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+      <div class="hidden-info">
+        <div id="no-more-tables">
+          <table class="col-md-12 table-bordered table-striped table-condensed cf">
+            <thead class="cf">
+              <tr>
+                <th>الدولة</th>
+                <th>النوع</th>
+                <th class="numeric">القطاع</th>
+                <th class="numeric">الوصف</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-title="الدولة">السعودية</td>
+                <td data-title="النوع">شرعى</td>
+                <td data-title="الوصف" class="numeric">البنوك</td>
+                <td data-title="الوصف">محتوى تفصيلى هنا</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="user-modal">
+    <!-- this is the entire modal form, including the background -->
+    <div class="user-modal-container">
+      <!-- this is the container wrapper -->
+      <ul class="switcher">
+        <li><a href="#0">تسجيل دخول </a></li>
+        <li><a href="#0">إنشاء حساب</a></li>
+      </ul>
+
+      <div id="login">
+        <!-- log in form -->
+        <form class="form">
+          <p class="fieldset">
+            <label class="image-replace email" for="signin-email">E-mail</label>
+            <input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="البريد الإلكترونى">
+            <span class="error-message">رسالة خطأ هنا!</span>
+          </p>
+
+          <p class="fieldset">
+            <label class="image-replace password" for="signin-password">Password</label>
+            <input class="full-width has-padding has-border" id="signin-password" type="text" placeholder="كلمة المرور">
+            <a href="#0" class="hide-password">اخفاء</a>
+            <span class="error-message">رسالة خطأ هنا!</span>
+          </p>
+
+          <p class="fieldset">
+            <input type="checkbox" id="remember-me" checked>
+            <label for="remember-me">تذكرنى</label>
+          </p>
+
+          <p class="fieldset">
+            <input class="full-width" type="submit" value="تسجيل دخول">
+          </p>
+        </form>
+
+        <p class="form-bottom-message"><a href="#0">نسيت كلمة المرور؟</a></p>
+        <!-- <a href="#0" class="close-form">Close</a> -->
+      </div>
+      <!-- login -->
+
+      <div id="signup">
+        <!-- sign up form -->
+        <form class="form">
+          <p class="fieldset">
+            <label class="image-replace username" for="signup-username">Username</label>
+            <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="إسم المستخدم">
+            <span class="error-message">رسالة خطأ هنا!</span>
+          </p>
+
+          <p class="fieldset">
+            <label class="image-replace email" for="signup-email">E-mail</label>
+            <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="البريد الإلكترونى">
+            <span class="error-message">رسالة خطأ هنا!</span>
+          </p>
+
+          <p class="fieldset">
+            <label class="image-replace password" for="signup-password">Password</label>
+            <input class="full-width has-padding has-border" id="signup-password" type="text" placeholder="كلمة المرور">
+            <a href="#0" class="hide-password">إخفاء</a>
+            <span class="error-message">رسالة خطأ هنا!</span>
+          </p>
+
+          <p class="fieldset">
+            <input type="checkbox" id="accept-terms">
+            <label for="accept-terms">موافق على  <a href="#0">الشروط و الأحكام</a></label>
+          </p>
+
+          <p class="fieldset">
+            <input class="full-width has-padding" type="submit" value="إنشاء حساب">
+          </p>
+        </form>
+
+        <!-- <a href="#0" class="close-form">Close</a> -->
+      </div>
+      <!-- signup -->
+
+      <div id="reset-password">
+        <!-- reset password form -->
+        <p class="form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
+        <p class="form-message">نسيت كلمة المرور الخاصة بك؟ برجاء إدخال البريد الإلكترونى الخاص بك و سوف يصلك رابط تحديث كلمة المرور</p>
+        <form class="form">
+          <p class="fieldset">
+            <label class="image-replace email" for="reset-email">E-mail</label>
+            <input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="البريد الإلكرتونى">
+            <span class="error-message">رسالة خطأ هنا!</span>
+          </p>
+
+          <p class="fieldset">
+            <input class="full-width has-padding" type="submit" value="Reset password">
+          </p>
+        </form>
+
+        <p class="form-bottom-message"><a href="#0">عوده لتسجيل الدخول</a></p>
+      </div>
+      <!-- reset-password -->
+      <a href="#0" class="close-form">Close</a>
+    </div>
+    <!-- user-modal-container -->
+  </div>
+  <!-- user-modal -->
+
+</ion-content>

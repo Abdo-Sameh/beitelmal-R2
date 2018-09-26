@@ -1,0 +1,219 @@
+<!--
+  Generated template for the LongRecommendationsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<header class="header">
+  <a (click)="openMenu()" class="primary-nav-trigger">
+			<span class="menu-icon"></span>
+		</a>
+  <!-- primary-nav-trigger -->
+  <div class="logo"><a href="index.html"><img src="assets/images/logo.png" alt="Logo"></a></div>
+
+
+</header>
+
+
+<ion-content>
+
+  <section class="intro-pages">
+    <div class="intro-box">
+      <h1>توصيات مضاربية</h1>
+    </div>
+  </section>
+
+  <main class="main-content">
+    <div class="container">
+      <h3>حدد تاريخ البحث</h3>
+      <span class="flat-input flat-select">
+        <select name="year" [(ngModel)]="year" [ngModelOptions]="{ standalone :true}" (ngModelChange)="longRecommendationsMonth($event)" class="valid">
+          <option value="0" disabled selected> العام </option>
+          <option *ngFor="let year of years;" value="{{year}}"> {{ year }} </option>
+        </select>
+      </span>
+
+      <span class="flat-input flat-select">
+        <select id="selectMonth" [(ngModel)]="month" [ngModelOptions]="{ standalone :true}" (ngModelChange)="longRecommendationsDay($event)" name="month" class="valid" disabled="disabled">
+          <option value="0" disabled selected> الشهر </option>
+          <option *ngFor="let month of months; let i = index;" value="{{i+1}}"> {{ month }} </option>
+        </select>
+      </span>
+
+      <div id="result" class="result" style="display: none; margin-bottom: 15px;">
+          <h3> نتائج توصيات شهر {{ data.monthName }}</h3>
+          <ul>
+              <li><span>إجمالي عدد التوصيات: </span>{{ data.days1 }} توصية</li>
+              <li><span>عدد التوصيات المحققة: {{ data.days3 }} توصية</span></li>
+              <li><span>عدد التوصيات ايقاف الخسارة: {{ data.recommendations_lose }} توصية</span></li>
+              <li *ngIf="data.average_profit == 0"><span>متوسط ربح التوصية الواحدة: 0</span></li>
+              <li *ngIf="data.average_profit != 0"><span>متوسط ربح التوصية الواحدة: {{ data.average_profit_per_unit }} % </span></li>
+              <li><span>عدد التوصيات المفتوحة: 0 توصية</span></li>
+          </ul>
+      </div>
+
+      <div id="no-more-tables">
+        <table class="col-md-12 table-bordered table-striped table-condensed cf full-tb">
+          <thead class="cf">
+            <tr>
+              <th class="text-center">#</th>
+              <th class="text-center">السهم</th>
+              <th class="text-center">كود السهم</th>
+              <th class="numeric text-center">تاريخ الشراء</th>
+              <th class="numeric text-center">سعر الشراء</th>
+              <th class="numeric text-center">تاريخ البيع</th>
+              <th class="numeric text-center">سعر البيع</th>
+              <th class="text-center">الحالة</th>
+              <th class="numeric text-center"> نسبة الربح / الخسارة</th>
+              <th class="text-center">المزيد</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let recommend of longRecom; let i = index;" class="mrgn-b-10">
+              <td data-title="#">
+                {{ i + 1 }}
+              </td>
+              <td data-title="السهم">
+                {{ recommend.recommendation_name }} - {{ recommend.id }}
+              </td>
+              <td data-title="كود السهم">
+                {{ recommend.code_name }}
+              </td>
+              <td data-title="تاريخ الشراء">
+                {{ recommend.created2_at }}
+              </td>
+              <td data-title="سعر الشراء">
+                {{ recommend.buyPrice }}
+              </td>
+              <td data-title="تاريخ البيع">
+                {{ recommend.updated2_at }}
+              </td>
+              <td *ngIf="recommend.status == 1" data-title="سعر البيع">
+                {{ recommend.sellPrice }}
+              </td>
+              <td *ngIf="recommend.status == 2" data-title="سعر البيع">
+                {{ recommend.stopLoss }}
+              </td>
+              <td data-title="الحالة">
+                <span *ngIf="recommend.status == 1"  class="statu win"><i class="fa fa-arrow-up" aria-hidden="true"></i> رابحة</span>
+                <span *ngIf="recommend.status == 2"  class="statu win"><i class="fa fa-arrow-up" aria-hidden="true"></i> وقف خسارة</span>
+              </td>
+              <!-- Get evaluations values if stats == 1 => win -->
+              <td data-title="نسبة الربح / الخسارة">
+                <span class="win">+2
+				        %</span>
+              </td>
+              <!-- Get evaluations values if stats == 2 => win -->
+              <td data-title="المزيد">
+                <a class="btn btn-default expand">+</a>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <div class="user-modal">
+    <!-- this is the entire modal form, including the background -->
+    <div class="user-modal-container">
+      <!-- this is the container wrapper -->
+      <ul class="switcher">
+        <li><a href="#0">تسجيل دخول </a></li>
+        <li><a href="#0">إنشاء حساب</a></li>
+      </ul>
+
+      <div id="login">
+        <!-- log in form -->
+        <form class="form">
+          <p class="fieldset">
+            <label class="image-replace email" for="signin-email">E-mail</label>
+            <input class="full-width has-padding has-border" [(ngModel)]='email' [ngModelOptions]="{ standalone :true}" id="signin-email" type="email" placeholder="البريد الإلكترونى">
+            <span class="error-message">رسالة خطأ هنا!</span>
+          </p>
+
+          <p class="fieldset">
+            <label class="image-replace password" for="signin-password">Password</label>
+            <input class="full-width has-padding has-border" [(ngModel)]='password' [ngModelOptions]="{ standalone :true}" id="signin-password" type="text" placeholder="كلمة المرور">
+            <a href="#0" class="hide-password">اخفاء</a>
+            <span class="error-message">رسالة خطأ هنا!</span>
+          </p>
+
+          <p class="fieldset">
+            <input type="checkbox" id="remember-me" checked>
+            <label for="remember-me">تذكرنى</label>
+          </p>
+
+          <p (click)="login()" class="fieldset">
+            <input class="full-width" type="submit" value="تسجيل دخول">
+          </p>
+        </form>
+
+        <p class="form-bottom-message"><a href="#0">نسيت كلمة المرور؟</a></p>
+        <!-- <a href="#0" class="close-form">Close</a> -->
+      </div>
+      <!-- login -->
+
+      <div id="signup">
+        <!-- sign up form -->
+        <form class="form">
+          <p class="fieldset">
+            <label class="image-replace username" for="signup-username">Username</label>
+            <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="إسم المستخدم">
+            <span class="error-message">رسالة خطأ هنا!</span>
+          </p>
+
+          <p class="fieldset">
+            <label class="image-replace email" for="signup-email">E-mail</label>
+            <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="البريد الإلكترونى">
+            <span class="error-message">رسالة خطأ هنا!</span>
+          </p>
+
+          <p class="fieldset">
+            <label class="image-replace password" for="signup-password">Password</label>
+            <input class="full-width has-padding has-border" id="signup-password" type="text" placeholder="كلمة المرور">
+            <a href="#0" class="hide-password">إخفاء</a>
+            <span class="error-message">رسالة خطأ هنا!</span>
+          </p>
+
+          <p class="fieldset">
+            <input type="checkbox" id="accept-terms">
+            <label for="accept-terms">موافق على  <a href="#0">الشروط و الأحكام</a></label>
+          </p>
+
+          <p class="fieldset">
+            <input class="full-width has-padding" type="submit" value="إنشاء حساب">
+          </p>
+        </form>
+
+        <!-- <a href="#0" class="close-form">Close</a> -->
+      </div>
+      <!-- signup -->
+
+      <div id="reset-password">
+        <!-- reset password form -->
+        <p class="form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
+        <p class="form-message">نسيت كلمة المرور الخاصة بك؟ برجاء إدخال البريد الإلكترونى الخاص بك و سوف يصلك رابط تحديث كلمة المرور</p>
+        <form class="form">
+          <p class="fieldset">
+            <label class="image-replace email" for="reset-email">E-mail</label>
+            <input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="البريد الإلكرتونى">
+            <span class="error-message">رسالة خطأ هنا!</span>
+          </p>
+
+          <p class="fieldset">
+            <input class="full-width has-padding" type="submit" value="Reset password">
+          </p>
+        </form>
+
+        <p class="form-bottom-message"><a href="#0">عوده لتسجيل الدخول</a></p>
+      </div>
+      <!-- reset-password -->
+      <a class="close-form">Close</a>
+    </div>
+    <!-- user-modal-container -->
+  </div>
+  <!-- user-modal -->
+
+</ion-content>

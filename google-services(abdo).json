@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "452821725792",
+    "firebase_url": "https://bietelmal-b9a0e.firebaseio.com",
+    "project_id": "bietelmal-b9a0e",
+    "storage_bucket": "bietelmal-b9a0e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452821725792:android:eb7a299db1daa920",
+        "android_client_info": {
+          "package_name": "com.test.beitelmal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "452821725792-v6o2u6ip1sr8vgpuvipsjr8gietmoidt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvABOslyFiVgGQKfu15DM3UWUBGR1R0SI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

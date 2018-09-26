@@ -1,0 +1,33 @@
+<!--
+  Generated template for the PolicyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<header class="header">
+
+  <a (click)="openMenu()" class="primary-nav-trigger">
+  <span class="menu-icon"></span>
+</a>
+  <div class="logo"><a href="index.html"><img src="assets/images/logo.png" alt="Logo"></a></div>
+
+</header>
+
+
+<ion-content>
+
+  <section class="intro-pages">
+		<div class="intro-box">
+			<h1>إخلاء المسؤلية</h1>
+		</div>
+	</section>
+
+	<main class="main-content">
+		<div class="container">
+      <div *ngFor="let respon of respons;">
+        <div [innerHTML]="respon.description"></div>
+      </div>
+		</div>
+	</main>
+
+</ion-content>

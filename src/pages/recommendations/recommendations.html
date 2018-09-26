@@ -1,0 +1,156 @@
+<!--
+  Generated template for the RecommendationsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<header class="header">
+
+  <a (click)="openMenu()" class="primary-nav-trigger">
+			<span class="menu-icon"></span>
+		</a>
+  <!-- primary-nav-trigger -->
+
+  <div class="logo"><a href="index.html"><img src="assets/images/logo.png" alt="Logo"></a></div>
+
+</header>
+
+
+<ion-content>
+
+  <section class="intro-pages">
+		<div class="intro-box">
+			<h1>توصيات استثمارية</h1>
+		</div>
+	</section>
+
+	<!-- <main class="main-content">
+		<div class="container">
+			<section class="blocks" >
+				<div *ngFor="let recommend of recentPublicRecommendations;" class="block recommend">
+					<ul>
+						<li><span>{{ recommend.description }}</span></li>
+            <li><h4>{{ recommend.file }}</h4></li>
+					</ul>
+				</div>
+			</section>
+		</div>
+	</main> -->
+
+  <main class="main-content">
+    <div class="container">
+      <div class="public-recos">
+        <div *ngFor="let recommend of recentPublicRecommendations;" class="public-recos-item">
+          <div class="img"><img src="assets/images/3.jpg"></div>
+          <div class="context">
+            <h5>{{  recommend.description }}</h5>
+            <a href="#">{{ recommend.file }}</a>
+          </div>
+          <div (click)="askForDownload(recommend.file)" class="dwnlod"><a href="#"><img src="assets/images/download.svg"></a></div>
+        </div> <!-- //public-recos-item -->
+      </div>
+    </div>
+  </main>
+
+  <div class="user-modal">
+    <!-- this is the entire modal form, including the background -->
+    <div class="user-modal-container">
+      <!-- this is the container wrapper -->
+      <ul class="switcher">
+        <li><a href="#0">تسجيل دخول </a></li>
+        <li><a href="#0">إنشاء حساب</a></li>
+      </ul>
+
+      <div id="login">
+        <!-- log in form -->
+        <form class="form">
+          <p class="fieldset">
+            <label class="image-replace email" for="signin-email">E-mail</label>
+            <input class="full-width has-padding has-border" [(ngModel)]='email' [ngModelOptions]="{ standalone :true}" id="signin-email" type="email" placeholder="البريد الإلكترونى">
+            <span class="error-message">رسالة خطأ هنا!</span>
+          </p>
+
+          <p class="fieldset">
+            <label class="image-replace password" for="signin-password">Password</label>
+            <input class="full-width has-padding has-border" [(ngModel)]='password' [ngModelOptions]="{ standalone :true}" id="signin-password" type="text" placeholder="كلمة المرور">
+            <a href="#0" class="hide-password">اخفاء</a>
+            <span class="error-message">رسالة خطأ هنا!</span>
+          </p>
+
+          <p class="fieldset">
+            <input type="checkbox" id="remember-me" checked>
+            <label for="remember-me">تذكرنى</label>
+          </p>
+
+          <p (click)="login()" class="fieldset">
+            <input class="full-width" type="submit" value="تسجيل دخول">
+          </p>
+        </form>
+
+        <p class="form-bottom-message"><a href="#0">نسيت كلمة المرور؟</a></p>
+        <!-- <a href="#0" class="close-form">Close</a> -->
+      </div>
+      <!-- login -->
+
+      <div id="signup">
+        <!-- sign up form -->
+        <form class="form">
+          <p class="fieldset">
+            <label class="image-replace username" for="signup-username">Username</label>
+            <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="إسم المستخدم">
+            <span class="error-message">رسالة خطأ هنا!</span>
+          </p>
+
+          <p class="fieldset">
+            <label class="image-replace email" for="signup-email">E-mail</label>
+            <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="البريد الإلكترونى">
+            <span class="error-message">رسالة خطأ هنا!</span>
+          </p>
+
+          <p class="fieldset">
+            <label class="image-replace password" for="signup-password">Password</label>
+            <input class="full-width has-padding has-border" id="signup-password" type="text" placeholder="كلمة المرور">
+            <a href="#0" class="hide-password">إخفاء</a>
+            <span class="error-message">رسالة خطأ هنا!</span>
+          </p>
+
+          <p class="fieldset">
+            <input type="checkbox" id="accept-terms">
+            <label for="accept-terms">موافق على  <a href="#0">الشروط و الأحكام</a></label>
+          </p>
+
+          <p class="fieldset">
+            <input class="full-width has-padding" type="submit" value="إنشاء حساب">
+          </p>
+        </form>
+
+        <!-- <a href="#0" class="close-form">Close</a> -->
+      </div>
+      <!-- signup -->
+
+      <div id="reset-password">
+        <!-- reset password form -->
+        <p class="form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
+        <p class="form-message">نسيت كلمة المرور الخاصة بك؟ برجاء إدخال البريد الإلكترونى الخاص بك و سوف يصلك رابط تحديث كلمة المرور</p>
+        <form class="form">
+          <p class="fieldset">
+            <label class="image-replace email" for="reset-email">E-mail</label>
+            <input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="البريد الإلكرتونى">
+            <span class="error-message">رسالة خطأ هنا!</span>
+          </p>
+
+          <p class="fieldset">
+            <input class="full-width has-padding" type="submit" value="Reset password">
+          </p>
+        </form>
+
+        <p class="form-bottom-message"><a href="#0">عوده لتسجيل الدخول</a></p>
+      </div>
+      <!-- reset-password -->
+      <a class="close-form">Close</a>
+    </div>
+    <!-- user-modal-container -->
+  </div>
+  <!-- user-modal -->
+
+</ion-content>
