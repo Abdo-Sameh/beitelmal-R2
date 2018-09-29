@@ -1,164 +1,150 @@
+<ion-content>
 
-
-    <header class="header">
-
-      <a (click)="openMenu()" class="primary-nav-trigger">
-			<span class="menu-icon"></span>
-		</a>
-      <!-- primary-nav-trigger -->
-
-      <div class="logo"><a href="index.html"><img src="assets/images/logo.png" alt="Logo"></a></div>
-
-    </header>
-
-
-  <ion-content>
-
-    <section class="intro-pages">
-  		<div class="intro-box">
-  			<h1>الباقات</h1>
-  		</div>
-  	</section>
-
-  	<main class="main-content">
-  		<div class="container">
-  			<ul *ngFor="let package of packages;"class="cd-pricing">
-  				<li>
-  					<header class="cd-pricing-header">
-  						<h2>{{ package.name }}</h2>
-  						<div class="cd-price">
-  							<span>${{ package.price }}</span>
-  						</div>
-  					</header> <!-- .cd-pricing-header -->
-  					<div class="cd-pricing-features">
-  						<ul>
-  							<li><em>{{ package.description }}</em></li>
-  						</ul>
-  					</div> <!-- .cd-pricing-features -->
-  					<footer *ngIf="loggedIn == '0'" class="cd-pricing-footer">
-  						<a (click)="registerationPage(package.id)">تسجيل حساب</a>
-  					</footer> <!-- .cd-pricing-footer -->
-  				</li>
-
-  			</ul> <!-- .cd-pricing -->
-
-  			<div class="cd-form">
-
-  				<div class="cd-plan-info">
-  					<!-- content will be loaded using jQuery - according to the selected plan -->
-  				</div>
-
-  				<div class="cd-more-info">
-  					<h3>تحتاج مساعدة؟</h3>
-  					<p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن ال</p>
-  				</div>
-
-
-  				<a href="#0" class="cd-close"></a>
-  			</div> <!-- .cd-form -->
-  			<div class="cd-overlay"></div> <!-- shadow layer -->
-  		</div>
-  	</main>
-
-    <div class="user-modal">
-      <!-- this is the entire modal form, including the background -->
-      <div class="user-modal-container">
-        <!-- this is the container wrapper -->
-        <ul class="switcher">
-          <li><a href="#0">تسجيل دخول </a></li>
-          <li><a href="#0">إنشاء حساب</a></li>
-        </ul>
-
-        <div id="login">
-          <!-- log in form -->
-          <form class="form">
-            <p class="fieldset">
-              <label class="image-replace email" for="signin-email">E-mail</label>
-              <input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="البريد الإلكترونى">
-              <span class="error-message">رسالة خطأ هنا!</span>
-            </p>
-
-            <p class="fieldset">
-              <label class="image-replace password" for="signin-password">Password</label>
-              <input class="full-width has-padding has-border" id="signin-password" type="text" placeholder="كلمة المرور">
-              <a href="#0" class="hide-password">اخفاء</a>
-              <span class="error-message">رسالة خطأ هنا!</span>
-            </p>
-
-            <p class="fieldset">
-              <input type="checkbox" id="remember-me" checked>
-              <label for="remember-me">تذكرنى</label>
-            </p>
-
-            <p class="fieldset">
-              <input class="full-width" type="submit" value="تسجيل دخول">
-            </p>
-          </form>
-
-          <p class="form-bottom-message"><a href="#0">نسيت كلمة المرور؟</a></p>
-          <!-- <a href="#0" class="close-form">Close</a> -->
-        </div>
-        <!-- login -->
-
-        <div id="signup">
-          <!-- sign up form -->
-          <form class="form">
-            <p class="fieldset">
-              <label class="image-replace username" for="signup-username">Username</label>
-              <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="إسم المستخدم">
-              <span class="error-message">رسالة خطأ هنا!</span>
-            </p>
-
-            <p class="fieldset">
-              <label class="image-replace email" for="signup-email">E-mail</label>
-              <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="البريد الإلكترونى">
-              <span class="error-message">رسالة خطأ هنا!</span>
-            </p>
-
-            <p class="fieldset">
-              <label class="image-replace password" for="signup-password">Password</label>
-              <input class="full-width has-padding has-border" id="signup-password" type="text" placeholder="كلمة المرور">
-              <a href="#0" class="hide-password">إخفاء</a>
-              <span class="error-message">رسالة خطأ هنا!</span>
-            </p>
-
-            <p class="fieldset">
-              <input type="checkbox" id="accept-terms">
-              <label for="accept-terms">موافق على  <a href="#0">الشروط و الأحكام</a></label>
-            </p>
-
-            <p class="fieldset">
-              <input class="full-width has-padding" type="submit" value="إنشاء حساب">
-            </p>
-          </form>
-
-          <!-- <a href="#0" class="close-form">Close</a> -->
-        </div>
-        <!-- signup -->
-
-        <div id="reset-password">
-          <!-- reset password form -->
-          <p class="form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
-          <p class="form-message">نسيت كلمة المرور الخاصة بك؟ برجاء إدخال البريد الإلكترونى الخاص بك و سوف يصلك رابط تحديث كلمة المرور</p>
-          <form class="form">
-            <p class="fieldset">
-              <label class="image-replace email" for="reset-email">E-mail</label>
-              <input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="البريد الإلكرتونى">
-              <span class="error-message">رسالة خطأ هنا!</span>
-            </p>
-
-            <p class="fieldset">
-              <input class="full-width has-padding" type="submit" value="Reset password">
-            </p>
-          </form>
-
-          <p class="form-bottom-message"><a href="#0">عوده لتسجيل الدخول</a></p>
-        </div>
-        <!-- reset-password -->
-        <a href="#0" class="close-form">Close</a>
-      </div>
-      <!-- user-modal-container -->
+  <section class="intro-pages">
+    <div class="intro-box">
+      <h1>الباقات</h1>
     </div>
-    <!-- user-modal -->
+  </section>
 
-  </ion-content>
+  <main class="main-content">
+    <div class="container">
+      <ul *ngFor="let package of packages;" class="cd-pricing">
+        <li>
+          <header class="cd-pricing-header">
+            <h2>{{ package.name }}</h2>
+            <div class="cd-price">
+              <span>${{ package.price }}</span>
+            </div>
+          </header> <!-- .cd-pricing-header -->
+          <div class="cd-pricing-features">
+            <ul>
+              <li><em>{{ package.description }}</em></li>
+            </ul>
+          </div> <!-- .cd-pricing-features -->
+          <footer *ngIf="loggedIn == '0'" class="cd-pricing-footer">
+            <a (click)="registerationPage(package.id)">تسجيل حساب</a>
+          </footer> <!-- .cd-pricing-footer -->
+        </li>
+
+      </ul> <!-- .cd-pricing -->
+
+      <div class="cd-form">
+
+        <div class="cd-plan-info">
+          <!-- content will be loaded using jQuery - according to the selected plan -->
+        </div>
+
+        <div class="cd-more-info">
+          <h3>تحتاج مساعدة؟</h3>
+          <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن ال</p>
+        </div>
+
+
+        <a href="#0" class="cd-close"></a>
+      </div> <!-- .cd-form -->
+      <div class="cd-overlay"></div> <!-- shadow layer -->
+    </div>
+  </main>
+
+  <div class="user-modal">
+    <!-- this is the entire modal form, including the background -->
+    <div class="user-modal-container">
+      <!-- this is the container wrapper -->
+      <ul class="switcher">
+        <li><a href="#0">تسجيل دخول </a></li>
+        <li><a href="#0">إنشاء حساب</a></li>
+      </ul>
+
+      <div id="login">
+        <!-- log in form -->
+        <form class="form">
+          <p class="fieldset">
+            <label class="image-replace email" for="signin-email">E-mail</label>
+            <input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="البريد الإلكترونى">
+            <span class="error-message">رسالة خطأ هنا!</span>
+          </p>
+
+          <p class="fieldset">
+            <label class="image-replace password" for="signin-password">Password</label>
+            <input class="full-width has-padding has-border" id="signin-password" type="text" placeholder="كلمة المرور">
+            <a href="#0" class="hide-password">اخفاء</a>
+            <span class="error-message">رسالة خطأ هنا!</span>
+          </p>
+
+          <p class="fieldset">
+            <input type="checkbox" id="remember-me" checked>
+            <label for="remember-me">تذكرنى</label>
+          </p>
+
+          <p class="fieldset">
+            <input class="full-width" type="submit" value="تسجيل دخول">
+            </p>
+        </form>
+
+        <p class="form-bottom-message"><a href="#0">نسيت كلمة المرور؟</a></p>
+        <!-- <a href="#0" class="close-form">Close</a> -->
+      </div>
+      <!-- login -->
+
+      <div id="signup">
+        <!-- sign up form -->
+        <form class="form">
+          <p class="fieldset">
+            <label class="image-replace username" for="signup-username">Username</label>
+            <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="إسم المستخدم">
+            <span class="error-message">رسالة خطأ هنا!</span>
+          </p>
+
+          <p class="fieldset">
+            <label class="image-replace email" for="signup-email">E-mail</label>
+            <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="البريد الإلكترونى">
+            <span class="error-message">رسالة خطأ هنا!</span>
+          </p>
+
+          <p class="fieldset">
+            <label class="image-replace password" for="signup-password">Password</label>
+            <input class="full-width has-padding has-border" id="signup-password" type="text" placeholder="كلمة المرور">
+            <a href="#0" class="hide-password">إخفاء</a>
+            <span class="error-message">رسالة خطأ هنا!</span>
+          </p>
+
+          <p class="fieldset">
+            <input type="checkbox" id="accept-terms">
+            <label for="accept-terms">موافق على  <a href="#0">الشروط و الأحكام</a></label>
+          </p>
+
+          <p class="fieldset">
+            <input class="full-width has-padding" type="submit" value="إنشاء حساب">
+            </p>
+        </form>
+
+        <!-- <a href="#0" class="close-form">Close</a> -->
+      </div>
+      <!-- signup -->
+
+      <div id="reset-password">
+        <!-- reset password form -->
+        <p class="form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
+        <p class="form-message">نسيت كلمة المرور الخاصة بك؟ برجاء إدخال البريد الإلكترونى الخاص بك و سوف يصلك رابط تحديث كلمة المرور</p>
+        <form class="form">
+          <p class="fieldset">
+            <label class="image-replace email" for="reset-email">E-mail</label>
+            <input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="البريد الإلكرتونى">
+            <span class="error-message">رسالة خطأ هنا!</span>
+          </p>
+
+          <p class="fieldset">
+            <input class="full-width has-padding" type="submit" value="Reset password">
+            </p>
+        </form>
+
+        <p class="form-bottom-message"><a href="#0">عوده لتسجيل الدخول</a></p>
+      </div>
+      <!-- reset-password -->
+      <a href="#0" class="close-form">Close</a>
+    </div>
+    <!-- user-modal-container -->
+  </div>
+  <!-- user-modal -->
+
+</ion-content>

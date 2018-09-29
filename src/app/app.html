@@ -19,9 +19,40 @@
                  </button>
                 </div>
               </ion-list>
+
+              <ion-list>
+                <ion-item text-wrap (click)="toggleGroup(i)" [ngClass]="{active: isGroupShown(i)}">
+                  <ion-row>
+                    <ion-col col-11>عن بيت المال</ion-col>
+                    <ion-col col-1 *ngIf="sublevel"></ion-col>
+                  </ion-row>
+                  <ion-row *ngIf="isGroupShown(i)">
+                    <ion-list>
+                      <div *ngFor="let p of subPages">
+                        <button menuClose ion-item class="menu_items"  (click)="openPage(p)">
+                          <span>{{p.title}}</span>
+                        </button>
+                      </div>
+                    </ion-list>
+                  </ion-row>
+                </ion-item>
+                <div>
+                  <button menuClose ion-item  class="menu_items" *ngIf="getLoggedIn() == '1'" (click)="logout()">
+                   <span>تسجيل الخروج</span>
+                </button>
+               </div>
+              </ion-list>
+
             </div>
           </div>
   </ion-content>
 </ion-menu>
+
+<header class="header">
+<a (click)="openMenu()" class="primary-nav-trigger">
+    <span class="menu-icon"></span>
+  </a>
+<div class="logo"><a><img src="assets/images/logo.png" alt="Logo"></a></div>
+</header>
 
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

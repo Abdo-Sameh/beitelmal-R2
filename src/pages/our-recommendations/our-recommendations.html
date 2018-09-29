@@ -5,19 +5,7 @@
   Ionic pages and navigation.
 -->
 
-<header class="header">
-
-  <a (click)="openMenu()" class="primary-nav-trigger">
-  			<span class="menu-icon"></span>
-  		</a>
-  <!-- primary-nav-trigger -->
-
-  <div class="logo"><a href="index.html"><img src="assets/images/logo.png" alt="Logo"></a></div>
-
-</header>
-
 <ion-content>
-
   <section class="intro-pages">
     <div class="intro-box">
       <h1>توصياتنا</h1>
@@ -26,7 +14,6 @@
 
   <main class="main-content">
     <div class="container">
-
       <ion-list radio-group [(ngModel)]="rec_type" (ngModelChange)="longRecommendationsMonth($event)">
         <ion-title>نوع التوصية</ion-title>
         <ion-item>
@@ -104,7 +91,6 @@
                         <strong> تاريخ اّخر تعديل : </strong>
                         <span>{{ recommend.updated2_at }}</span>
                       </li>
-
                     </ul>
                   </div>
                 </div>
@@ -115,5 +101,4 @@
       </section>
     </div>
   </main>
-
 </ion-content>

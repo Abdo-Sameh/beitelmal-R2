@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Nav, Platform, AlertController, NavController, ToastController } from 'ionic-angular';
+import { Nav, Platform, AlertController, NavController, ToastController, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
@@ -32,10 +32,12 @@ export class MyApp {
 
   public counter = 0;
   public timer = 0
+  shownGroup = null;
   @ViewChild(Nav) nav: Nav;
   pages: Array<{ title: string, component: any, login: boolean }>;
+  subPages: Array<{ title: string, component: any, login: boolean }>;
 
-  constructor(public http: Http, platform: Platform, public apiProvider: ApiProvider,
+  constructor(public http: Http, platform: Platform, public apiProvider: ApiProvider, public menu: MenuController,
     private _notificationService: NotificationsProvider, statusBar: StatusBar, splashScreen: SplashScreen,
     private push: Push, public alertCtrl: AlertController, private fcm: FcmProvider, public toastCtrl: ToastController) {
     platform.ready().then(() => {
@@ -57,24 +59,40 @@ export class MyApp {
     });
     this.pages = [
       { title: 'الرئيسية', component: HomePage, login: false },
-      { title: 'من نحن', component: AboutUsPage, login: false },
+      // { title: 'عن بيت المال', component: null, login: false },
       { title: 'الباقات', component: PackagesPage, login: false },
       { title: 'الخدمات', component: ServicesPage, login: false },
       { title: 'توصياتنا', component: OurRecommendationsPage, login: true },
       { title: 'تقارير', component: ReportsPage, login: true },
-      { title: 'توصيات مضاربية', component: LongRecommendationsPage, login: false },
-      { title: 'توصيات قصيرة المدى', component: ShortRecommendationsPage, login: true },
-      { title: 'توصيات استثمارية', component: RecommendationsPage, login: false },
+      { title: 'معدل الأداء', component: LongRecommendationsPage, login: false },
+      // { title: 'توصيات قصيرة المدى', component: ShortRecommendationsPage, login: true },
+      // { title: 'توصيات استثمارية', component: RecommendationsPage, login: false },
+      { title: 'اتصل بنا', component: ContactUsPage, login: false },
+      // { title: 'تسجيل الخروج', component: HomePage, login: true },
+    ];
+
+    this.subPages = [
+      { title: 'من نحن', component: AboutUsPage, login: false },
       { title: 'الشروط والأحكام', component: TermsPage, login: false },
       { title: 'سياسة الموقع', component: PolicyPage, login: false },
       { title: 'إخلاء المسؤلية', component: ResponsPage, login: false },
-      { title: 'اتصل بنا', component: ContactUsPage, login: false },
-      { title: 'تسجيل الخروج', component: HomePage, login: true },
     ];
   }
 
   getLoggedIn() {
     return localStorage.getItem('loggedIn');
+  }
+
+  toggleGroup(group) {
+    if (this.isGroupShown(group)) {
+      this.shownGroup = null;
+    } else {
+      this.shownGroup = group;
+    }
+  }
+
+  isGroupShown(group) {
+    return this.shownGroup === group;
   }
 
   presentToast() {
@@ -87,13 +105,19 @@ export class MyApp {
   }
 
   openPage(page) {
-    if (page.title == "تسجيل الخروج") {
-      this.logout();
-    }
-    if (page.title == "توصياتنا") {
+    if (page != null) {
+      if (page.title == "تسجيل الخروج") {
+        this.logout();
+      }
+      if (page.title == "توصياتنا") {
 
+      }
+      this.nav.setRoot(page.component);
     }
-    this.nav.setRoot(page.component);
+  }
+
+  openMenu() {
+    this.menu.open();
   }
 
   ngOnInit() {
@@ -115,8 +139,8 @@ export class MyApp {
 
   getRemainingDays() {
     this.apiProvider.remainingDays(JSON.parse(localStorage.getItem('email'))).subscribe(data => {
-      if(data['STATUS'] == 1)
-      this.timer = data['TIMER'];
+      if (data['STATUS'] == 1)
+        this.timer = data['TIMER'];
       console.log(data);
     });
   }
