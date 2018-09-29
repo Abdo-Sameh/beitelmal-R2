@@ -30,22 +30,24 @@
         </ion-item>
       </ion-list>
 
-      <ion-item>
-        <ion-label>القطاع</ion-label>
-        <ion-select [(ngModel)]="sector" [selectOptions]="selectOptions">
-          <ion-option *ngFor="let sector of sectors;" value="sector.id">{{ sector.name }}</ion-option>
-        </ion-select>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>درجة الشرعية</ion-label>
-        <ion-select [(ngModel)]="stock_type" [selectOptions]="selectOptions">
-          <ion-option value="0">شرعى قائمة الفوزان</ion-option>
-          <ion-option value="1">شرعى قائمة الراجحى</ion-option>
-          <ion-option value="2">شرعى قائمة البلاد</ion-option>
-          <ion-option value="3">غير شرعى</ion-option>
-        </ion-select>
-      </ion-item>
+      <ion-list class="choose-sector">
+        <ion-item>
+          <ion-label>القطاع</ion-label>
+          <ion-select [(ngModel)]="sector" [selectOptions]="selectOptions">
+            <ion-option *ngFor="let sector of sectors;" value="sector.id">{{ sector.name }}</ion-option>
+          </ion-select>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label>درجة الشرعية</ion-label>
+          <ion-select [(ngModel)]="stock_type" [selectOptions]="selectOptions">
+            <ion-option value="0">شرعى قائمة الفوزان</ion-option>
+            <ion-option value="1">شرعى قائمة الراجحى</ion-option>
+            <ion-option value="2">شرعى قائمة البلاد</ion-option>
+            <ion-option value="3">غير شرعى</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
 
       <section class="blocks">
         <div *ngFor="let recommend of recentOurRecommendations; let i = index;" class="block">
