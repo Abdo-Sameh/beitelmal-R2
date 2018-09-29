@@ -7,6 +7,32 @@ page-our-recommendations {
     font-size: 22px;
   }
   .alert-md .alert-radio-icon {
-     left: -10px;
-   }
+    left: -10px;
+  }
+  .list-ios {
+    overflow: hidden;
+  }
+  .title-ios {
+    margin-bottom: 20px;
+    display: block;
+  }
+  .item-radio {
+    padding-left: 0;
+    display: block;
+    float: right;
+    width: 33.333%;
+    padding: 0 5px;
+    font-size: 1.4rem;
+    overflow: auto;
+  }
+  .item-select {
+    display: block;
+    float: right;
+    width: 50%;
+    padding: 0 5px;
+    font-size: 1.4rem;
+  }
+  .list-ios {
+    margin-bottom: 20px;
+  }
 }

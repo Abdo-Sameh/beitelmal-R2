@@ -129,7 +129,8 @@ body {
   left: 0;
   right: 0;
   margin: 0 auto;
-  background: rgba(2, 23, 37, 0.95);
+  /* background: rgba(20, 47, 78, 0.78); */
+  background-color: #142f4e;
   height: 50px;
   width: 100%;
   max-width: 768px;
@@ -203,7 +204,7 @@ body {
   top: 0;
   height: 100%;
   width: 50px;
-  background-color: #c79d63;
+  background-color: #e84179;
 }
 .primary-nav-trigger .menu-text {
   color: white;
@@ -323,7 +324,7 @@ body {
   transition: background 0.2s;
 }
 .no-touch .primary-nav a:hover {
-  background-color: #c79d63;
+  background-color: #e84179;
 }
 .primary-nav .label {
   color: #06446e;
@@ -414,7 +415,7 @@ body {
 .intro-pages .intro-box h1 {
   margin: 1em 0 1.2em;
   line-height: 1.5;
-  color: #c79d63;
+  color: #e84179;
   font-size: 2.4rem;
   font-weight: 700;
 }
@@ -483,7 +484,7 @@ body {
   width: 50px;
   height: 50px;
   background: url("../images/user.png") no-repeat center center;
-  background-color: #c79d63;
+  background-color: #e84179;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -ms-background-size: contain;
@@ -690,7 +691,7 @@ xsigin/signup popup
   appearance: none;
 }
 .form input.has-border:focus {
-  border-color: #c79d63;
+  border-color: #e84179;
   box-shadow: 0 0 5px rgba(52, 54, 66, 0.1);
   outline: none;
 }
@@ -704,7 +705,7 @@ xsigin/signup popup
 .form input[type=submit] {
   padding: 16px 0;
   cursor: pointer;
-  background: #c79d63;
+  background: #e84179;
   color: #FFF;
   font-weight: bold;
   border: none;
@@ -851,7 +852,7 @@ xsigin/signup popup
   margin-bottom: 25px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.12);
   border: 1px solid #EEE;
-  border-right: 3px solid #c79d63;
+  border-right: 3px solid #e84179;
   border-radius: 1.2em;
   padding: 1em;
   position: relative;
@@ -905,7 +906,7 @@ xsigin/signup popup
 .subscribe a {
   display: block;
   width: 100%;
-  background-color: #c79d63;
+  background-color: #e84179;
   padding: 0.8em;
   border-radius: 0.2em;
 }
@@ -962,7 +963,7 @@ xsigin/signup popup
 
 .cd-pricing-header {
   padding: 0em 1em;
-  background-color: #c79d63;
+  background-color: #e84179;
   border-radius: .25em .25em 0 0;
   box-shadow: inset 0 1px 0 #f0efe0;
   color: #ffffff;
@@ -1119,7 +1120,7 @@ Form
   right: 0;
   height: calc(100% + 5px);
   width: 100%;
-  background-color: #c79d63;
+  background-color: #e84179;
   will-change: transform;
   -webkit-transform: scaleY(0);
   -moz-transform: scaleY(0);
@@ -1243,7 +1244,7 @@ Form
 .cd-form input[type="password"]:focus,
 .cd-form select:focus {
   outline: none;
-  border-color: #c79d63;
+  border-color: #e84179;
 }
 .cd-form input[type="text"],
 .cd-form input[type="email"],
@@ -1585,7 +1586,7 @@ thead.cf {
 }
 .hidden-info thead.cf {
   background-color: #EFEFEF;
-  color: #c79d63;
+  color: #e84179;
 }
 .hidden-info .table-bordered>thead>tr>th, .hidden-info .table-bordered>thead>tr>td {
   padding: 7px 2px;
@@ -1601,14 +1602,14 @@ a.btn-show-hide {
 
 /*======= Start Recommend ========*/
 .recommend {
-  border-top: 2px solid #c79d63;
+  border-top: 2px solid #e84179;
   border-right: none;
   margin: 0 1% 25px;
 }
 .recommend h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: #c79d63;
+  color: #e84179;
 }
 @media only screen and (min-width: 479px) {
   .recommend {
@@ -1719,7 +1720,7 @@ ul.contact li a {
 }
 .contact-form input:focus,
 .contact-form textarea:focus {
-  border-color: #c79d63;
+  border-color: #e84179;
   outline: 0;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -1742,7 +1743,7 @@ ul.contact li a {
   width: 100%;
   padding: 10px 0;
   cursor: pointer;
-  background: #c79d63;
+  background: #e84179;
   color: #FFF;
   font-weight: bold;
   border: none;
