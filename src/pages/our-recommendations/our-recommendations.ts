@@ -22,20 +22,36 @@ export class OurRecommendationsPage {
   recentOurRecommendations = []
   loggedIn = "0";
   subscriber = "0";
+  selectOptions
+  sectors = []
+
   constructor(public loadingCtrl: LoadingController, public apiProvider: ApiProvider, public navCtrl: NavController,
     public navParams: NavParams, private _notificationService: NotificationsProvider, public menu: MenuController) {
     this.ourRecommendations();
+    this.getAllSectors();
     this.loggedIn = localStorage.getItem('loggedIn');
     this.subscriber = localStorage.getItem('subscriber');
-
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OurRecommendationsPage');
+    this.selectOptions = {
+      // title: 'Pizza Toppings',
+      // subTitle: 'Select your toppings',
+      cancelText: 'الغاء',
+      okText: 'موافق'
+    };
   }
 
   openMenu(){
     this.menu.open();
+  }
+
+  getAllSectors(){
+    this.apiProvider.sectors().subscribe(res => {
+      console.log(res);
+      this.sectors = res['SECTORS'];
+    })
   }
 
   ourRecommendations() {

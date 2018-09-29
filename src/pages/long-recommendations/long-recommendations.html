@@ -19,12 +19,30 @@
 
   <section class="intro-pages">
     <div class="intro-box">
-      <h1>توصيات مضاربية</h1>
+      <h1>توصيات</h1>
     </div>
   </section>
 
+
+
   <main class="main-content">
     <div class="container">
+
+      <ion-list radio-group [(ngModel)]="rec_type" (ngModelChange)="longRecommendationsMonth($event)">
+        <ion-item>
+          <ion-label>توصيات مضاربية</ion-label>
+          <ion-radio value="0"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>توصيات قصيرة المدى</ion-label>
+          <ion-radio value="1"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>توصيات استثمارية</ion-label>
+          <ion-radio value="2"></ion-radio>
+        </ion-item>
+      </ion-list>
+
       <h3>حدد تاريخ البحث</h3>
       <span class="flat-input flat-select">
         <select name="year" [(ngModel)]="year" [ngModelOptions]="{ standalone :true}" (ngModelChange)="longRecommendationsMonth($event)" class="valid">
@@ -41,15 +59,15 @@
       </span>
 
       <div id="result" class="result" style="display: none; margin-bottom: 15px;">
-          <h3> نتائج توصيات شهر {{ data.monthName }}</h3>
-          <ul>
-              <li><span>إجمالي عدد التوصيات: </span>{{ data.days1 }} توصية</li>
-              <li><span>عدد التوصيات المحققة: {{ data.days3 }} توصية</span></li>
-              <li><span>عدد التوصيات ايقاف الخسارة: {{ data.recommendations_lose }} توصية</span></li>
-              <li *ngIf="data.average_profit == 0"><span>متوسط ربح التوصية الواحدة: 0</span></li>
-              <li *ngIf="data.average_profit != 0"><span>متوسط ربح التوصية الواحدة: {{ data.average_profit_per_unit }} % </span></li>
-              <li><span>عدد التوصيات المفتوحة: 0 توصية</span></li>
-          </ul>
+        <h3> نتائج توصيات شهر {{ data.monthName }}</h3>
+        <ul>
+          <li><span>إجمالي عدد التوصيات: </span>{{ data.days1 }} توصية</li>
+          <li><span>عدد التوصيات المحققة: {{ data.days3 }} توصية</span></li>
+          <li><span>عدد التوصيات ايقاف الخسارة: {{ data.recommendations_lose }} توصية</span></li>
+          <li *ngIf="data.average_profit == 0"><span>متوسط ربح التوصية الواحدة: 0</span></li>
+          <li *ngIf="data.average_profit != 0"><span>متوسط ربح التوصية الواحدة: {{ data.average_profit_per_unit }} % </span></li>
+          <li><span>عدد التوصيات المفتوحة: 0 توصية</span></li>
+        </ul>
       </div>
 
       <div id="no-more-tables">

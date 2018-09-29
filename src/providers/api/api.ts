@@ -120,6 +120,10 @@ export class ApiProvider {
     return this.http.get(this.serverURL + '/api/' + 'v1/evaluation/long/day?month=' + month + '&id=' + id).map((res: any) => res.json());
   }
 
+  sectors() {
+    return this.http.get(this.serverURL + '/api/' + 'v1/sectors').map((res: any) => res.json());
+  }
+
   services() {
     return this.http.get(this.serverURL + '/api/' + 'v1/services').map((res: any) => res.json());
   }

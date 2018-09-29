@@ -5,16 +5,16 @@
   Ionic pages and navigation.
 -->
 
-  <header class="header">
+<header class="header">
 
-    <a (click)="openMenu()" class="primary-nav-trigger">
+  <a (click)="openMenu()" class="primary-nav-trigger">
   			<span class="menu-icon"></span>
   		</a>
-    <!-- primary-nav-trigger -->
+  <!-- primary-nav-trigger -->
 
-    <div class="logo"><a href="index.html"><img src="assets/images/logo.png" alt="Logo"></a></div>
+  <div class="logo"><a href="index.html"><img src="assets/images/logo.png" alt="Logo"></a></div>
 
-  </header>
+</header>
 
 <ion-content>
 
@@ -26,58 +26,92 @@
 
   <main class="main-content">
     <div class="container">
+
+      <ion-list radio-group [(ngModel)]="rec_type" (ngModelChange)="longRecommendationsMonth($event)">
+        <ion-title>نوع التوصية</ion-title>
+        <ion-item>
+          <ion-label>توصيات مضاربية</ion-label>
+          <ion-radio value="0"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>توصيات قصيرة المدى</ion-label>
+          <ion-radio value="1"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>توصيات استثمارية</ion-label>
+          <ion-radio value="2"></ion-radio>
+        </ion-item>
+      </ion-list>
+
+      <ion-item>
+        <ion-label>القطاع</ion-label>
+        <ion-select [(ngModel)]="sector" [selectOptions]="selectOptions">
+          <ion-option *ngFor="let sector of sectors;" value="sector.id">{{ sector.name }}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>درجة الشرعية</ion-label>
+        <ion-select [(ngModel)]="stock_type" [selectOptions]="selectOptions">
+          <ion-option value="0">شرعى قائمة الفوزان</ion-option>
+          <ion-option value="1">شرعى قائمة الراجحى</ion-option>
+          <ion-option value="2">شرعى قائمة البلاد</ion-option>
+          <ion-option value="3">غير شرعى</ion-option>
+        </ion-select>
+      </ion-item>
+
       <section class="blocks">
         <div *ngFor="let recommend of recentOurRecommendations; let i = index;" class="block">
-        <ul>
-          <div class="container">
-            <div class="row" id="results">
-              <div class="col-md-3 col-sm-6">
-                <div class="rec_box">
-                  <header class="equal_rec">
-                    <h5 *ngIf="recommend.status == 0">جديد <i class="fa fa-minus" aria-hidden="true"></i></h5>
-                    <h5 *ngIf="recommend.status == 1">رابح <i class="fa fa-minus" aria-hidden="true"></i></h5>
-                    <h5 *ngIf="recommend.status == 2">وقف خسائر <i class="fa fa-minus" aria-hidden="true"></i></h5>
-                    <h5 *ngIf="recommend.status == 3">البيع بقرب سعر الشراء <i class="fa fa-minus" aria-hidden="true"></i></h5>
-                    <h5 *ngIf="recommend.status == 4">معدله <i class="fa fa-minus" aria-hidden="true"></i></h5>
-                  </header>
+          <ul>
+            <div class="container">
+              <div class="row" id="results">
+                <div class="col-md-3 col-sm-6">
+                  <div class="rec_box">
+                    <header class="equal_rec">
+                      <h5 *ngIf="recommend.status == 0">جديد <i class="fa fa-minus" aria-hidden="true"></i></h5>
+                      <h5 *ngIf="recommend.status == 1">رابح <i class="fa fa-minus" aria-hidden="true"></i></h5>
+                      <h5 *ngIf="recommend.status == 2">وقف خسائر <i class="fa fa-minus" aria-hidden="true"></i></h5>
+                      <h5 *ngIf="recommend.status == 3">البيع بقرب سعر الشراء <i class="fa fa-minus" aria-hidden="true"></i></h5>
+                      <h5 *ngIf="recommend.status == 4">معدله <i class="fa fa-minus" aria-hidden="true"></i></h5>
+                    </header>
 
-                  <ul class="box_body">
-                    <li>
-                      <!-- <strong> معلومات عن التوصية</strong> -->
-                      <span>{{ recommend.description }}</span>
-                    </li>
-                    <li><strong>السهم:</strong> <span>{{ recommend.recommendation_name }}</span></li>
-                    <li>
-                      <strong> الدولة : </strong>
-                      <span>{{ recommend.country }}</span>
-                    </li>
-                    <li>
-                      <strong> النوع : </strong>
-                      <span>{{ recommend.stock_type_id == 0 ? 'شرعي' : 'الكل'  }}</span>
-                    </li>
-                    <li>
-                      <strong> القطاع : </strong>
-                      <span>{{ recommend.sector }}</span>
-                    </li>
-                    <li><strong>سعر الشراء:</strong> <span>{{ recommend.buyPrice }}</span></li>
-                    <li><strong>سعر البيع :</strong> <span>{{ recommend.sellPrice }}</span></li>
-                    <li><strong>سعر وقف الخسارة :</strong> <span>{{ recommend.stopLoss }}</span></li>
-                    <li>
-                      <strong>تاريخ الإنشاء :</strong>
-                      <span>{{ recommend.created2_at }}</span>
-                    </li>
-                    <li>
-                      <strong> تاريخ اّخر تعديل : </strong>
-                      <span>{{ recommend.updated2_at }}</span>
-                    </li>
+                    <ul class="box_body">
+                      <li>
+                        <!-- <strong> معلومات عن التوصية</strong> -->
+                        <span>{{ recommend.description }}</span>
+                      </li>
+                      <li><strong>السهم:</strong> <span>{{ recommend.recommendation_name }}</span></li>
+                      <li>
+                        <strong> الدولة : </strong>
+                        <span>{{ recommend.country }}</span>
+                      </li>
+                      <li>
+                        <strong> النوع : </strong>
+                        <span>{{ recommend.stock_type_id == 0 ? 'شرعي' : 'الكل'  }}</span>
+                      </li>
+                      <li>
+                        <strong> القطاع : </strong>
+                        <span>{{ recommend.sector }}</span>
+                      </li>
+                      <li><strong>سعر الشراء:</strong> <span>{{ recommend.buyPrice }}</span></li>
+                      <li><strong>سعر البيع :</strong> <span>{{ recommend.sellPrice }}</span></li>
+                      <li><strong>سعر وقف الخسارة :</strong> <span>{{ recommend.stopLoss }}</span></li>
+                      <li>
+                        <strong>تاريخ الإنشاء :</strong>
+                        <span>{{ recommend.created2_at }}</span>
+                      </li>
+                      <li>
+                        <strong> تاريخ اّخر تعديل : </strong>
+                        <span>{{ recommend.updated2_at }}</span>
+                      </li>
 
-                  </ul>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </ul>
-      </div>
+          </ul>
+        </div>
       </section>
     </div>
   </main>

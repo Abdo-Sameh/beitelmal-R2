@@ -61,7 +61,6 @@ export class MyApp {
       { title: 'الباقات', component: PackagesPage, login: false },
       { title: 'الخدمات', component: ServicesPage, login: false },
       { title: 'توصياتنا', component: OurRecommendationsPage, login: true },
-
       { title: 'تقارير', component: ReportsPage, login: true },
       { title: 'توصيات مضاربية', component: LongRecommendationsPage, login: false },
       { title: 'توصيات قصيرة المدى', component: ShortRecommendationsPage, login: true },

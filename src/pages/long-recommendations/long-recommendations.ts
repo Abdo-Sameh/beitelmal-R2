@@ -36,6 +36,7 @@ export class LongRecommendationsPage {
   }
   months = []
   longRecom = []
+  rec_type
   constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: ApiProvider,
     private _notificationService: NotificationsProvider, public menu: MenuController) {
     this.loggedIn = localStorage.getItem('loggedIn');
@@ -84,13 +85,14 @@ export class LongRecommendationsPage {
   }
 
   longRecommendationsDay($event) {
+    this.longRecom = [];
     console.log($event);
     if($event.length == 1)
       $event = this.year + "-0" + $event;
     else
       $event = this.year + "-" + $event;
-
-    this.apiProvider.longRecommendationsDay($event, 0).subscribe(res => {
+      console.log($event, this.rec_type);
+    this.apiProvider.longRecommendationsDay($event, this.rec_type).subscribe(res => {
       console.log(res);
       if(res['STATUS'] == 1){
         $('#result').show();
