@@ -38,4 +38,7 @@ page-our-recommendations {
   .list-ios > .item-block:first-child {
     border-top: none;
   }
+  .toolbar-title {
+    overflow: auto;
+  }
 }
