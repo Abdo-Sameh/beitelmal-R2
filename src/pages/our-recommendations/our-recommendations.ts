@@ -18,6 +18,7 @@ import { NotificationsProvider } from '../../providers/notifications/notificatio
   templateUrl: 'our-recommendations.html',
   providers: [NotificationsProvider]
 })
+
 export class OurRecommendationsPage {
   recentOurRecommendations = []
   loggedIn = "0";
