@@ -33,14 +33,14 @@
       <ion-list class="choose-sector">
         <ion-item>
           <ion-label>القطاع</ion-label>
-          <ion-select [(ngModel)]="sector_id" [selectOptions]="selectOptions" (ngModelChange)="ourRecommendations()">
+          <ion-select [(ngModel)]="sector_id" [selectOptions]="selectOptions" (ngModelChange)="ourRecommendations()" okText="موافق" cancelText="الغاء">
             <ion-option *ngFor="let sector of sectors;" value="{{sector.id}}">{{ sector.name }}</ion-option>
           </ion-select>
         </ion-item>
 
         <ion-item>
           <ion-label>درجة الشرعية</ion-label>
-          <ion-select [(ngModel)]="stock_type_id" [selectOptions]="selectOptions" (ngModelChange)="ourRecommendations()">
+          <ion-select [(ngModel)]="stock_type_id" [selectOptions]="selectOptions" (ngModelChange)="ourRecommendations()" okText="موافق" cancelText="الغاء">
             <ion-option value="0">شرعى قائمة الفوزان</ion-option>
             <ion-option value="1">شرعى قائمة الراجحى</ion-option>
             <ion-option value="2">شرعى قائمة البلاد</ion-option>

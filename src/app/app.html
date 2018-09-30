@@ -24,7 +24,7 @@
                 <ion-item text-wrap (click)="toggleGroup(i)" [ngClass]="{active: isGroupShown(i)}">
                   <ion-row>
                     <ion-col col-11>عن بيت المال</ion-col>
-                    <ion-col col-1 *ngIf="sublevel"></ion-col>
+                    <!-- <ion-col col-1 *ngIf="sublevel"></ion-col> -->
                   </ion-row>
                   <ion-row *ngIf="isGroupShown(i)">
                     <ion-list>
