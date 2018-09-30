@@ -23,7 +23,6 @@ page-our-recommendations {
     width: 33.333%;
     padding: 0 5px;
     font-size: 1.4rem;
-    overflow: auto;
   }
   .item-select {
     display: block;
@@ -38,7 +37,13 @@ page-our-recommendations {
   .list-ios > .item-block:first-child {
     border-top: none;
   }
-  .toolbar-title {
-    overflow: auto;
+  // .toolbar-title {
+  //   overflow: auto;
+  // }
+  .list-md {
+    overflow: hidden;
+  }
+  .list-md > .item-block:last-child ion-label, .list-md > .item-block:last-child .item-inner, .list-md > .item-wrapper:last-child ion-label, .list-md > .item-wrapper:last-child .item-innerv {
+    border-bottom: 1px solid #dedede;
   }
 }

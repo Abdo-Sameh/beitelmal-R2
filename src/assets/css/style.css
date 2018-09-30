@@ -1477,8 +1477,8 @@ Buttons
  .cd-form input[type="submit"] {
   padding: 0.7em 1em;
   margin-top: 10px;
-  border-radius: 1em;
-  font-size: 1.7rem;
+  /* border-radius: 1em; */
+  font-size: 1.3rem;
 }
 
 .cd-pricing-footer a {
@@ -1774,3 +1774,24 @@ ul.contact li a {
   font-family: 'JFFlat-Regular', sans-serif;
 }
 /*======= //End Contact =========*/
+
+
+.remaining {
+  overflow: hidden;
+  position: absolute;
+  left: 5px;
+  top: 10px;
+}
+.remaining .sand-watch {
+  overflow: hidden;
+}
+.remaining .sand-watch time {
+  float: right;
+  padding: 9px 0 0 2px;
+  color: #FFF;
+  font-weight: 700;
+}
+.remaining .sand-watch img {
+  float: left;
+  height: 30px;
+}
