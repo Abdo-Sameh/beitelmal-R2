@@ -86,7 +86,6 @@ export class ApiProvider {
     return this.http.get(this.serverURL + '/api/' + 'v1/auth/formData').map((res: any) => res.json());
   }
 
-
   about() {
     //console.log(this.serverURL+'/api/'+'v1/about');
     return this.http.get(this.serverURL + '/api/' + 'v1/about').map((res: any) => res.json());
@@ -100,8 +99,8 @@ export class ApiProvider {
     return this.http.get(this.serverURL + '/api/' + 'v1/reports').map((res: any) => res.json());
   }
 
-  recommendations(id) {
-    return this.http.get(this.serverURL + '/api/' + 'v1/recommendations?id=' + id).map((res: any) => res.json());
+  recommendations(id, rec_type, stock_type_id, sector_id) {
+    return this.http.get(this.serverURL + '/api/' + 'v1/recommendations?id=' + id + '&rec_type=' + rec_type + '&stock_type_id=' + stock_type_id + '&sector_id=' + sector_id).map((res: any) => res.json());
   }
 
   shortRecommendations() {
