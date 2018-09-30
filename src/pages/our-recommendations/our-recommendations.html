@@ -76,7 +76,10 @@
                     <li>
                         <img src="assets/images/maintenance.svg">
                       <strong> النوع : </strong>
-                      <span>{{ recommend.stock_type_id == 0 ? 'شرعي' : 'الكل'  }}</span>
+                      <span *ngIf="recommend.stock_type_id == '0'">شرعى قائمة الفوزان</span>
+                      <span *ngIf="recommend.stock_type_id == '1'">شرعى قائمة الراجحى</span>
+                      <span *ngIf="recommend.stock_type_id == '2'">شرعى قائمة البلاد</span>
+                      <span *ngIf="recommend.stock_type_id == '3'">غير شرعى</span>
                     </li>
                     <li>
                         <img src="assets/images/analytics.svg">
