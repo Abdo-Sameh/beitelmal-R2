@@ -1701,11 +1701,12 @@ a.btn-show-hide {
 .public-recos-item .context {
   width: 70%;
   float: right;
-  padding: 2%;
+  padding: 2% 1%;
 }
 .public-recos-item .context h5 {
-  margin-bottom: 7px;
+  margin-bottom: 8px;
   font-size: 14px;
+  margin-top: 3px;
 }
 .public-recos-item .context a {
   color: #0F3661;
