@@ -51,16 +51,71 @@
       <div id="result" class="result" style="display: none; margin-bottom: 15px;">
         <h3> نتائج توصيات شهر {{ data.monthName }}</h3>
         <ul>
-          <li><span>إجمالي عدد التوصيات: </span>{{ data.days1 }} توصية</li>
-          <li><span>عدد التوصيات المحققة: {{ data.days3 }} توصية</span></li>
-          <li><span>عدد التوصيات ايقاف الخسارة: {{ data.recommendations_lose }} توصية</span></li>
+          <li><span>إجمالي عدد التوصيات: <strong> {{ data.days1 }} </strong> توصية</span></li>
+          <li><span>عدد التوصيات المحققة: <strong>{{ data.days3 }}</strong> توصية</span></li>
+          <li><span>عدد التوصيات ايقاف الخسارة: <strong>{{ data.recommendations_lose }}</strong> توصية</span></li>
           <li *ngIf="data.average_profit == 0"><span>متوسط ربح التوصية الواحدة: 0</span></li>
-          <li *ngIf="data.average_profit != 0"><span>متوسط ربح التوصية الواحدة: {{ data.average_profit_per_unit }} % </span></li>
-          <li><span>عدد التوصيات المفتوحة: 0 توصية</span></li>
+          <li *ngIf="data.average_profit != 0"><span>متوسط ربح التوصية الواحدة: <strong>{{ data.average_profit_per_unit }}</strong> % </span></li>
+          <!-- <li><span>عدد التوصيات المفتوحة: 0 توصية</span></li> -->
         </ul>
       </div>
 
-      <div id="no-more-tables">
+      <section class="blocks">
+        <div *ngFor="let recommend of longRecom; let i = index;" class="block">
+          <div id="results">
+            <div class="col-rec">
+              <div class="rec_box">
+                <ul class="box_body">
+                  <li>
+                    <img src="assets/images/id.svg">
+                    <strong>#:</strong>
+                    <span>{{ i + 1 }}</span>
+                  </li>
+                  <li>
+                    <img src="assets/images/business.svg">
+                    <strong> السهم : </strong>
+                    <span>{{ recommend.recommendation_name }} - {{ recommend.id }}</span>
+                  </li>
+                  <li>
+                    <img src="assets/images/hash.svg">
+                    <strong> كود السهم : </strong>
+                    <span>{{ recommend.code_name }}</span>
+                  </li>
+                  <li>
+                    <img src="assets/images/calendar.svg">
+                    <strong> تاريخ الشراء : </strong>
+                    <span>{{ recommend.created2_at }}</span>
+                  </li>
+                  <li>
+                    <img src="assets/images/payment.svg">
+                    <strong>سعر الشراء:</strong>
+                    <span>{{ recommend.buyPrice }}</span>
+                  </li>
+                  <li>
+                      <img src="assets/images/calendar.svg">
+                      <strong> تاريخ البيع : </strong>
+                      <span>{{ recommend.created2_at }}</span>
+                    </li>
+                  <li>
+                    <img src="assets/images/payment.svg">
+                    <strong>سعر البيع :</strong>
+                    <span *ngIf="recommend.status == 1">{{ recommend.sellPrice }}</span>
+                    <span *ngIf="recommend.status == 2">{{ recommend.stopLoss }}</span>
+                  </li>
+                  <li>
+                    <img src="assets/images/status.svg">
+                    <strong>الحالة :</strong>
+                    <span *ngIf="recommend.status == 1">رابحة</span>
+                    <span *ngIf="recommend.status == 2">وقف خسارة</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- <div id="no-more-tables">
         <table class="col-md-12 table-bordered table-striped table-condensed cf full-tb">
           <thead class="cf">
             <tr>
@@ -106,12 +161,10 @@
                 <span *ngIf="recommend.status == 1"  class="statu win"><i class="fa fa-arrow-up" aria-hidden="true"></i> رابحة</span>
                 <span *ngIf="recommend.status == 2"  class="statu win"><i class="fa fa-arrow-up" aria-hidden="true"></i> وقف خسارة</span>
               </td>
-              <!-- Get evaluations values if stats == 1 => win -->
               <td data-title="نسبة الربح / الخسارة">
                 <span class="win">+2
 				        %</span>
               </td>
-              <!-- Get evaluations values if stats == 2 => win -->
               <td data-title="المزيد">
                 <a class="btn btn-default expand">+</a>
               </td>
@@ -119,7 +172,7 @@
 
           </tbody>
         </table>
-      </div>
+      </div> -->
     </div>
   </main>
 
