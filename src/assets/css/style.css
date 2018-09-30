@@ -845,16 +845,16 @@ xsigin/signup popup
 
 /*----- Start Block ------*/
 .blocks {
-  padding: 50px 0;
-  overflow: hidden;
+  padding: 25px 0;
+  /* overflow: hidden; */
 }
 .block {
   margin-bottom: 25px;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.12);
   border: 1px solid #EEE;
-  border-right: 3px solid #e84179;
-  border-radius: 1.2em;
-  padding: 1em;
+  /* border-right: 3px solid #e84179; */
+  border-radius: 0.5rem;
+  padding: 0.5em;
   position: relative;
 }
 .block a.absolut-link {
@@ -866,30 +866,54 @@ xsigin/signup popup
 }
 .block ul {
   margin-bottom: 15px;
+  margin-top: 10px;
 }
 .block li {
   position: relative;
   font-size: .8rem;
   font-size: 13px;
-  padding: 0 15px;
-  margin-bottom: 8px;
+  padding: 5px 28px 5px 5px;
   line-height: 1.1;
-  color: #4a4a4a;
+  overflow: hidden;
+  background-color: #FFF;
 }
-.block li:before {
+.block li:nth-child(even) {
+  background-color: #EEE;
+}
+.block li img {
   position: absolute;
   content: '';
-  right: 0;
-  top: 5px;
-  width: 7px;
-  height: 7px;
-  background-color: #03263d;
-  border-radius: 2px;
+  right: 3px;
+  top: 3px;
+  width: 17px;
+  height: 17px;
+}
+.block li strong {
+  float: right;
+  text-align: right;
+}
+.block li span {
+  float: left;
+  text-align: left;
 }
 .block a.read-more {
   color: #03263d;
   display: block;
   text-align: left;
+}
+.equal_rec h5 {
+  text-align: center;
+  font-weight: 700;
+  color: #142f4e;
+  font-size: 21px;
+  margin: 0.750rem;
+  border-bottom: 1px solid #142f4e;
+  padding: 0 0 5px;
+}
+@media (min-width: 481px) {
+  .col-rec {
+    width: 100%
+  }
 }
 
 
