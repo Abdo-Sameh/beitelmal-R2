@@ -1477,8 +1477,8 @@ Buttons
  .cd-form input[type="submit"] {
   padding: 0.7em 1em;
   margin-top: 10px;
-  border-radius: 1em;
-  font-size: 1.7rem;
+  /* border-radius: 1em; */
+  font-size: 1.3rem;
 }
 
 .cd-pricing-footer a {
