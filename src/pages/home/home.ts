@@ -34,16 +34,12 @@ export class HomePage {
     this.publicRecommendations();
     this.menu.enable(true);
     this.reports();
-    this.ourRecommendations();
+
     this.loggedIn = localStorage.getItem('loggedIn');
     this.subscriber = JSON.parse(localStorage.getItem('subscriber'));
     this.package = JSON.parse(localStorage.getItem('package'));
-    $('.menu-icon').removeClass('is-clicked');
-    $('.header').removeClass('menu-is-open');
-    $('.main-nav').children('ul').removeClass('is-visible');
-    $('.primary-nav').removeClass('is-visible').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function() {
-      $('body').removeClass('overflow-hidden');
-    });
+    console.log(this.package);
+    this.ourRecommendations();
   }
 
   openMenu() {
@@ -87,42 +83,57 @@ export class HomePage {
       spinner: "bubbles"
     });
     loading.present();
-    this.apiProvider.recommendations(localStorage.getItem('id'), 0, "", "").subscribe(res => {
-      console.log(res);
-      if (res['STATUS'] == 1 && res['RECOMMENDATIONS'] != []) {
+    if (this.package == '11') {
+      this.apiProvider.recommendations(localStorage.getItem('id'), "", "", "").subscribe(res => {
         console.log(res);
-        if(res['RECOMMENDATIONS']['data'].slice(0, 1)[0])
-          this.recentOurRecommendations = res['RECOMMENDATIONS']['data'].slice(0, 1);
-        console.log(this.recentOurRecommendations);
-        loading.dismiss();
-      } else {
-        loading.dismiss();
-      }
-    })
-
-    this.apiProvider.recommendations(localStorage.getItem('id'), 1, "", "").subscribe(res => {
-      console.log(res);
-      if (res['STATUS'] == 1 && res['RECOMMENDATIONS'] != []) {
+        if (res['STATUS'] == 1 && res['RECOMMENDATIONS'] != []) {
+          console.log(res);
+          if (res['RECOMMENDATIONS']['data'].slice(0, 1)[0])
+            this.recentOurRecommendations = res['RECOMMENDATIONS']['data'].slice(0, 1);
+          console.log(this.recentOurRecommendations);
+          loading.dismiss();
+        } else {
+          loading.dismiss();
+        }
+      })
+    }
+    else {
+      this.apiProvider.recommendations(localStorage.getItem('id'), 0, "", "").subscribe(res => {
         console.log(res);
-        if(res['RECOMMENDATIONS']['data'].slice(0, 1)[0])
-          this.recentOurRecommendations.push(res['RECOMMENDATIONS']['data'].slice(0, 1)[0]);
-        console.log(this.recentOurRecommendations);
-      }
-    })
+        if (res['STATUS'] == 1 && res['RECOMMENDATIONS'] != []) {
+          console.log(res);
+          if (res['RECOMMENDATIONS']['data'].slice(0, 1)[0])
+            this.recentOurRecommendations = res['RECOMMENDATIONS']['data'].slice(0, 1);
+          console.log(this.recentOurRecommendations);
+          loading.dismiss();
+        } else {
+          loading.dismiss();
+        }
+      })
 
-    this.apiProvider.recommendations(localStorage.getItem('id'), 2, "", "").subscribe(res => {
-      console.log(res);
-      if (res['STATUS'] == 1 && res['RECOMMENDATIONS'] != []) {
+      this.apiProvider.recommendations(localStorage.getItem('id'), 1, "", "").subscribe(res => {
         console.log(res);
-        if(res['RECOMMENDATIONS']['data'].slice(0, 1)[0])
-          this.recentOurRecommendations.push(res['RECOMMENDATIONS']['data'].slice(0, 1)[0]);
-        console.log(this.recentOurRecommendations);
-      }
-    })
+        if (res['STATUS'] == 1 && res['RECOMMENDATIONS'] != []) {
+          console.log(res);
+          if (res['RECOMMENDATIONS']['data'].slice(0, 1)[0])
+            this.recentOurRecommendations.push(res['RECOMMENDATIONS']['data'].slice(0, 1)[0]);
+          console.log(this.recentOurRecommendations);
+        }
+      })
 
+      this.apiProvider.recommendations(localStorage.getItem('id'), 2, "", "").subscribe(res => {
+        console.log(res);
+        if (res['STATUS'] == 1 && res['RECOMMENDATIONS'] != []) {
+          console.log(res);
+          if (res['RECOMMENDATIONS']['data'].slice(0, 1)[0])
+            this.recentOurRecommendations.push(res['RECOMMENDATIONS']['data'].slice(0, 1)[0]);
+          console.log(this.recentOurRecommendations);
+        }
+      })
+    }
   }
 
-  ourRecommendationsPage(){
+  ourRecommendationsPage() {
     this.navCtrl.push(OurRecommendationsPage).then(() => {
       const index = this.navCtrl.getActive().index;
       console.log(this.navCtrl.getActive());
@@ -162,7 +173,7 @@ export class HomePage {
     });
   }
 
-  packagesPage(){
+  packagesPage() {
     this.navCtrl.push(PackagesPage).then(() => {
       const index = this.navCtrl.getActive().index;
       console.log(this.navCtrl.getActive());
