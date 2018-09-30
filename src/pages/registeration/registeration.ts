@@ -38,7 +38,7 @@ export class RegisterationPage {
     console.log('ionViewDidLoad RegisterationPage');
   }
 
-  openMenu(){
+  openMenu() {
     this.menu.open();
   }
 
@@ -53,6 +53,41 @@ export class RegisterationPage {
         // loading.dismiss();
       }
     });
+  }
+
+  freeRegister(name, email, phone, package_id) {
+    this.apiProvider.freeRegister(name, email, phone, package_id).then((result) => {
+      console.log(result);
+      if (result['STATUS'] == 1) {
+        let toast = this.toastCtrl.create({
+          message: result['MESSAGE'],
+          duration: 3000,
+          position: 'bottom'
+        });
+
+        toast.onDidDismiss(() => {
+          console.log('Dismissed toast');
+        });
+
+        toast.present();
+        this.navCtrl.push(HomePage).then(() => {
+          const index = this.navCtrl.getActive().index;
+          this.navCtrl.remove(0, index);
+        });
+
+      } else {
+        let toast = this.toastCtrl.create({
+          message: 'لإتمام التسجيل رجاء التأكد من صحة البيانات وعدم التسجيل بها من قبل',
+          duration: 3000,
+          position: 'bottom'
+        });
+
+        toast.onDidDismiss(() => {
+          console.log('Dismissed toast');
+        });
+        toast.present();
+      }
+    })
   }
 
   register(name, email, phone, country_id, member_type, package_id, password, stock_type) {
@@ -100,7 +135,7 @@ export class RegisterationPage {
     });
   }
 
-  homePage(){
+  homePage() {
     this.navCtrl.push(HomePage).then(() => {
       const index = this.navCtrl.getActive().index;
       this.navCtrl.remove(0, index);

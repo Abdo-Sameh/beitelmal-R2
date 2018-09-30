@@ -62,7 +62,7 @@ export class ApiProvider {
     });
   }
 
-  freeRegister(name, email, phone) {
+  freeRegister(name, email, phone, package_id) {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/x-www-form-urlencoded');
@@ -70,6 +70,7 @@ export class ApiProvider {
       urlSearchParams.append('name', name);
       urlSearchParams.append('email', email);
       urlSearchParams.append('phone', phone);
+      urlSearchParams.append('package', package_id);
       let body = urlSearchParams.toString()
       console.log(headers);
       this.http.post(this.serverURL + '/api/v1/' + 'auth/freeregister', body, { headers: headers }).

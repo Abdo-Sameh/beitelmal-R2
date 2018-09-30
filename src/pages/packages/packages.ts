@@ -63,6 +63,8 @@ export class PackagesPage {
       if (res['STATUS'] == 1) {
         this.packages = res['PACKAGES'];
         loading.dismiss();
+      }else {
+        loading.dismiss();
       }
     });
   }

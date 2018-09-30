@@ -54,7 +54,7 @@
           </span>
         </div>
 
-        <div class="half-width">
+        <!-- <div class="half-width">
           <label for="shareStatu">اختر نوع الإشتراك</label>
           <span class="cd-select">
             <select name="stock_type" [(ngModel)]='stock_type' [ngModelOptions]="{ standalone :true}" id="packages">
@@ -63,9 +63,9 @@
               <option value="1">كل الأسهم</option>
             </select>
           </span>
-        </div>
+        </div> -->
 
-        <div class="half-width">
+        <!-- <div class="half-width">
           <label for="country">البلد</label>
           <span class="cd-select">
             <select name="country" [(ngModel)]='country_id' [ngModelOptions]="{ standalone :true}" id="country">
@@ -74,9 +74,9 @@
 
             </select>
           </span>
-        </div>
+        </div> -->
 
-        <div class="half-width">
+        <!-- <div class="half-width">
           <label for="country">نوع العميل</label>
           <span class="cd-select">
             <select name="member_type" [(ngModel)]='member_type' [ngModelOptions]="{ standalone :true}" id="country">
@@ -85,9 +85,9 @@
               <option value="w">ادارة حافظة</option>
             </select>
           </span>
-        </div>
+        </div> -->
 
-        <div class="half-width">
+        <!-- <div class="half-width">
           <label for="userPassword">كلمة المرور</label>
           <input type="password" [(ngModel)]='password' [ngModelOptions]="{ standalone :true}" id="userPassword" name="userPassword">
         </div>
@@ -95,13 +95,13 @@
         <div class="half-width">
           <label for="userPasswordRepeat">تأكيد كلمة المرور</label>
           <input type="password" [(ngModel)]='password_confirm' [ngModelOptions]="{ standalone :true}" id="userPasswordRepeat" name="userPasswordRepeat">
-        </div>
+        </div> -->
 
       </fieldset>
 
       <fieldset>
         <div>
-          <input (click)="register(name, email, phone, country_id, member_type, package_id, password, stock_type)" type="submit" value="إنشاء حساب" style="margin-right: 7%;">
+          <input (click)="freeRegister(name, email, phone, package_id)" type="submit" value="إنشاء حساب" style="margin-right: 7%;">
           <input  (click)="homePage()" type="submit" value="رجوع" style="margin-right: 28%;">
         </div>
 

@@ -4,6 +4,7 @@ import { PackagesPage } from '../packages/packages';
 import { LoginPage } from '../login/login';
 import { ReportsPage } from '../reports/reports';
 import { RecommendationsPage } from '../recommendations/recommendations';
+import { OurRecommendationsPage } from '../our-recommendations/our-recommendations';
 import { ApiProvider } from './../../providers/api/api';
 import * as $ from "jquery";
 import { NotificationsProvider } from '../../providers/notifications/notifications';
@@ -32,9 +33,9 @@ export class HomePage {
     this.publicRecommendations();
     this.menu.enable(true);
     this.reports();
-    // this.ourRecommendations();
+    this.ourRecommendations();
     this.loggedIn = localStorage.getItem('loggedIn');
-    this.subscriber = localStorage.getItem('subscriber');
+    this.subscriber = JSON.parse(localStorage.getItem('subscriber'));
     $('.menu-icon').removeClass('is-clicked');
     $('.header').removeClass('menu-is-open');
     $('.main-nav').children('ul').removeClass('is-visible');
@@ -79,23 +80,31 @@ export class HomePage {
     });
   }
 
-  // ourRecommendations() {
-  //   let loading = this.loadingCtrl.create({
-  //     spinner: "bubbles"
-  //   });
-  //   loading.present();
-  //   this.apiProvider.recommendations(localStorage.getItem('id')).subscribe(res => {
-  //     console.log(res);
-  //     if (res['STATUS'] == 1) {
-  //       console.log(res);
-  //       this.recentOurRecommendations = res['RECOMMENDATIONS']['data'].slice(0, 3);
-  //       console.log(this.recentOurRecommendations);
-  //       loading.dismiss();
-  //     } else {
-  //       loading.dismiss();
-  //     }
-  //   })
-  // }
+  ourRecommendations() {
+    let loading = this.loadingCtrl.create({
+      spinner: "bubbles"
+    });
+    loading.present();
+    this.apiProvider.recommendations(localStorage.getItem('id'), 1, "", "").subscribe(res => {
+      console.log(res);
+      if (res['STATUS'] == 1) {
+        console.log(res);
+        this.recentOurRecommendations = res['RECOMMENDATIONS']['data'].slice(0, 1);
+        console.log(this.recentOurRecommendations);
+        loading.dismiss();
+      } else {
+        loading.dismiss();
+      }
+    })
+  }
+
+  ourRecommendationsPage(){
+    this.navCtrl.push(OurRecommendationsPage).then(() => {
+      const index = this.navCtrl.getActive().index;
+      console.log(this.navCtrl.getActive());
+      this.navCtrl.remove(0, index);
+    });
+  }
 
   loginPage() {
     this.navCtrl.push(LoginPage).then(() => {

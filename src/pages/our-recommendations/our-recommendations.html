@@ -18,16 +18,18 @@
       <ion-list radio-group [(ngModel)]="rec_type" (ngModelChange)="ourRecommendations()">
         <ion-item>
           <ion-label>مضاربية</ion-label>
-          <ion-radio value="0"></ion-radio>
+          <ion-radio *ngIf="package == '11'" value="0" checked></ion-radio>
+          <ion-radio *ngIf="package != '11'" value="0"></ion-radio>
         </ion-item>
-        <ion-item>
+        <ion-item *ngIf="package != '11' && package != '7'">
           <ion-label>قصيرة المدى</ion-label>
           <ion-radio value="1"></ion-radio>
         </ion-item>
-        <ion-item>
+        <ion-item *ngIf="package != '11' && package != '7'">
           <ion-label>استثمارية</ion-label>
           <ion-radio value="2"></ion-radio>
         </ion-item>
+
       </ion-list>
 
       <ion-list class="choose-sector">
@@ -67,14 +69,14 @@
                     <li>
                       <img src="assets/images/business.svg">
                       <strong>السهم:</strong>
-                        <span>{{ recommend.recommendation_name }}</span></li>
+                      <span>{{ recommend.recommendation_name }}</span></li>
                     <li>
                       <img src="assets/images/world.svg">
                       <strong> السوق : </strong>
                       <span>{{ recommend.country }}</span>
                     </li>
                     <li>
-                        <img src="assets/images/maintenance.svg">
+                      <img src="assets/images/maintenance.svg">
                       <strong> النوع : </strong>
                       <span *ngIf="recommend.stock_type_id == '0'">شرعى قائمة الفوزان</span>
                       <span *ngIf="recommend.stock_type_id == '1'">شرعى قائمة الراجحى</span>
@@ -82,7 +84,7 @@
                       <span *ngIf="recommend.stock_type_id == '3'">غير شرعى</span>
                     </li>
                     <li>
-                        <img src="assets/images/analytics.svg">
+                      <img src="assets/images/analytics.svg">
                       <strong> القطاع : </strong>
                       <span>{{ recommend.sector }}</span>
                     </li>
@@ -112,8 +114,8 @@
                       <span>{{ recommend.updated2_at }}</span>
                     </li>
                     <li>
-                        <!-- <strong> معلومات عن التوصية</strong> -->
-                        <span>{{ recommend.description }}</span>
+                      <!-- <strong> معلومات عن التوصية</strong> -->
+                      <span>{{ recommend.description }}</span>
                     </li>
                   </ul>
                 </div>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, MenuController } from 'ionic-angular';
+import { NavController, NavParams, MenuController, ToastController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { ApiProvider } from './../../providers/api/api';
 import * as $ from "jquery";
@@ -26,7 +26,7 @@ export class LoginPage {
   timer = 0
   loggedIn = "0"
   subscriber = "0";
-  constructor(public apiProvider: ApiProvider, public navCtrl: NavController, public navParams: NavParams,
+  constructor(public apiProvider: ApiProvider, public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController,
     private fcm: FcmProvider, private _notificationService: NotificationsProvider, public menu: MenuController) {
   }
 
@@ -64,6 +64,13 @@ export class LoginPage {
           console.log(this.navCtrl.getActive());
           this.navCtrl.remove(0, index);
         });
+      }else {
+        let toast = this.toastCtrl.create({
+          message: result['MESSAGE'],
+          duration: 3000,
+          position: 'bottom'
+        });
+        toast.present();
       }
     })
   }

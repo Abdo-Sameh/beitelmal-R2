@@ -16,8 +16,8 @@
       <section class="blocks">
         <div *ngIf="loggedIn == '1' && subscriber == '1'" class="block">
           <a href="recommend.html" class="absolut-link"></a>
-          <!-- <h2>أحدث التوصيات</h2> -->
-          <!-- <ul *ngFor="let recommend of recentOurRecommendations; let i = index;">
+          <h2>أحدث التوصيات</h2>
+          <ul *ngFor="let recommend of recentOurRecommendations; let i = index;">
             <div class="container">
               <div class="row" id="results">
                 <div class="col-md-3 col-sm-6">
@@ -41,7 +41,10 @@
                       </li>
                       <li>
                         <strong> النوع : </strong>
-                        <span>{{ recommend.stock_type_id == 0 ? 'شرعي' : 'الكل'  }}</span>
+                        <span *ngIf="recommend.stock_type_id == '0'">شرعى قائمة الفوزان</span>
+                        <span *ngIf="recommend.stock_type_id == '1'">شرعى قائمة الراجحى</span>
+                        <span *ngIf="recommend.stock_type_id == '2'">شرعى قائمة البلاد</span>
+                        <span *ngIf="recommend.stock_type_id == '3'">غير شرعى</span>
                       </li>
                       <li>
                         <strong> القطاع : </strong>
@@ -64,8 +67,8 @@
                 </div>
               </div>
             </div>
-          </ul> -->
-          <!-- <a (click)="ourRecommendationsPage()" class="read-more">إقرأ المزيد</a> -->
+          </ul>
+          <a (click)="ourRecommendationsPage()" class="read-more">إقرأ المزيد</a>
         </div>
         <!-- //block -->
         <div *ngIf="loggedIn == '1'" class="block">
