@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { App, NavController, LoadingController, MenuController } from 'ionic-angular';
 import { PackagesPage } from '../packages/packages';
 import { LoginPage } from '../login/login';
+import { ReportsPage } from '../reports/reports';
+import { RecommendationsPage } from '../recommendations/recommendations';
 import { ApiProvider } from './../../providers/api/api';
 import * as $ from "jquery";
 import { NotificationsProvider } from '../../providers/notifications/notifications';
@@ -30,7 +32,7 @@ export class HomePage {
     this.publicRecommendations();
     this.menu.enable(true);
     this.reports();
-    this.ourRecommendations();
+    // this.ourRecommendations();
     this.loggedIn = localStorage.getItem('loggedIn');
     this.subscriber = localStorage.getItem('subscriber');
     $('.menu-icon').removeClass('is-clicked');
@@ -77,23 +79,23 @@ export class HomePage {
     });
   }
 
-  ourRecommendations() {
-    let loading = this.loadingCtrl.create({
-      spinner: "bubbles"
-    });
-    loading.present();
-    this.apiProvider.recommendations(localStorage.getItem('id')).subscribe(res => {
-      console.log(res);
-      if (res['STATUS'] == 1) {
-        console.log(res);
-        this.recentOurRecommendations = res['RECOMMENDATIONS']['data'].slice(0, 3);
-        console.log(this.recentOurRecommendations);
-        loading.dismiss();
-      } else {
-        loading.dismiss();
-      }
-    })
-  }
+  // ourRecommendations() {
+  //   let loading = this.loadingCtrl.create({
+  //     spinner: "bubbles"
+  //   });
+  //   loading.present();
+  //   this.apiProvider.recommendations(localStorage.getItem('id')).subscribe(res => {
+  //     console.log(res);
+  //     if (res['STATUS'] == 1) {
+  //       console.log(res);
+  //       this.recentOurRecommendations = res['RECOMMENDATIONS']['data'].slice(0, 3);
+  //       console.log(this.recentOurRecommendations);
+  //       loading.dismiss();
+  //     } else {
+  //       loading.dismiss();
+  //     }
+  //   })
+  // }
 
   loginPage() {
     this.navCtrl.push(LoginPage).then(() => {
@@ -105,6 +107,22 @@ export class HomePage {
 
   homePage() {
     this.navCtrl.push(HomePage).then(() => {
+      const index = this.navCtrl.getActive().index;
+      console.log(this.navCtrl.getActive());
+      this.navCtrl.remove(0, index);
+    });
+  }
+
+  reportsPage() {
+    this.navCtrl.push(ReportsPage).then(() => {
+      const index = this.navCtrl.getActive().index;
+      console.log(this.navCtrl.getActive());
+      this.navCtrl.remove(0, index);
+    });
+  }
+
+  recommendationsPage() {
+    this.navCtrl.push(RecommendationsPage).then(() => {
       const index = this.navCtrl.getActive().index;
       console.log(this.navCtrl.getActive());
       this.navCtrl.remove(0, index);

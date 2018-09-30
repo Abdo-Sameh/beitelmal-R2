@@ -16,8 +16,8 @@
       <section class="blocks">
         <div *ngIf="loggedIn == '1' && subscriber == '1'" class="block">
           <a href="recommend.html" class="absolut-link"></a>
-          <h2>أحدث التوصيات</h2>
-          <ul *ngFor="let recommend of recentOurRecommendations; let i = index;">
+          <!-- <h2>أحدث التوصيات</h2> -->
+          <!-- <ul *ngFor="let recommend of recentOurRecommendations; let i = index;">
             <div class="container">
               <div class="row" id="results">
                 <div class="col-md-3 col-sm-6">
@@ -64,9 +64,8 @@
                 </div>
               </div>
             </div>
-            <!-- <li>{{ recommend.recommendation_name }}</li> -->
-          </ul>
-          <a (click)="ourRecommendationsPage()" class="read-more">إقرأ المزيد</a>
+          </ul> -->
+          <!-- <a (click)="ourRecommendationsPage()" class="read-more">إقرأ المزيد</a> -->
         </div>
         <!-- //block -->
         <div *ngIf="loggedIn == '1'" class="block">

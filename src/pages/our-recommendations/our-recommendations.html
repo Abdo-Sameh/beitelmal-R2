@@ -14,7 +14,7 @@
 
   <main class="main-content">
     <div class="container">
-      <ion-list radio-group [(ngModel)]="rec_type" (ngModelChange)="longRecommendationsMonth($event)">
+      <ion-list radio-group [(ngModel)]="rec_type" (ngModelChange)="ourRecommendations()">
         <ion-title>نوع التوصية</ion-title>
         <ion-item>
           <ion-label>مضاربية</ion-label>
@@ -33,14 +33,14 @@
       <ion-list class="choose-sector">
         <ion-item>
           <ion-label>القطاع</ion-label>
-          <ion-select [(ngModel)]="sector" [selectOptions]="selectOptions">
-            <ion-option *ngFor="let sector of sectors;" value="sector.id">{{ sector.name }}</ion-option>
+          <ion-select [(ngModel)]="sector_id" [selectOptions]="selectOptions" (ngModelChange)="ourRecommendations()">
+            <ion-option *ngFor="let sector of sectors;" value="{{sector.id}}">{{ sector.name }}</ion-option>
           </ion-select>
         </ion-item>
-  
+
         <ion-item>
           <ion-label>درجة الشرعية</ion-label>
-          <ion-select [(ngModel)]="stock_type" [selectOptions]="selectOptions">
+          <ion-select [(ngModel)]="stock_type_id" [selectOptions]="selectOptions" (ngModelChange)="ourRecommendations()">
             <ion-option value="0">شرعى قائمة الفوزان</ion-option>
             <ion-option value="1">شرعى قائمة الراجحى</ion-option>
             <ion-option value="2">شرعى قائمة البلاد</ion-option>
@@ -85,7 +85,7 @@
                     </li>
                     <li>
                       <img src="assets/images/payment.svg">
-                      <strong>سعر الشراء:</strong> 
+                      <strong>سعر الشراء:</strong>
                       <span>{{ recommend.buyPrice }}</span>
                     </li>
                     <li>

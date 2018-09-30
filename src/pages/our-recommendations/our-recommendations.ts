@@ -25,10 +25,13 @@ export class OurRecommendationsPage {
   subscriber = "0";
   selectOptions
   sectors = []
+  rec_type = ""
+  stock_type_id = ""
+  sector_id = ""
 
   constructor(public loadingCtrl: LoadingController, public apiProvider: ApiProvider, public navCtrl: NavController,
     public navParams: NavParams, private _notificationService: NotificationsProvider, public menu: MenuController) {
-    this.ourRecommendations();
+    // this.ourRecommendations();
     this.getAllSectors();
     this.loggedIn = localStorage.getItem('loggedIn');
     this.subscriber = localStorage.getItem('subscriber');
@@ -59,18 +62,18 @@ export class OurRecommendationsPage {
     let loading = this.loadingCtrl.create({
       spinner: "bubbles"
     });
-    loading.present();
-    this.apiProvider.recommendations(localStorage.getItem('id')).subscribe(res => {
-      console.log(res);
+    loading.present();//recommendations(id, rec_type, stock_type_id, sector_id)
+    console.log(localStorage.getItem('id'), this.rec_type, this.stock_type_id, this.sector_id);
+    this.apiProvider.recommendations(localStorage.getItem('id'), this.rec_type, this.stock_type_id, this.sector_id).subscribe(res => {
+      // console.log(res);
       if (res['STATUS'] == 1) {
-        console.log(res);
+        // console.log(res);
         this.recentOurRecommendations = res['RECOMMENDATIONS']['data'];
         console.log(this.recentOurRecommendations);
         loading.dismiss();
       }
     })
   }
-
 
   logout() {
     this._notificationService.deleteUserToken(localStorage.getItem('id')).subscribe((res) => {
