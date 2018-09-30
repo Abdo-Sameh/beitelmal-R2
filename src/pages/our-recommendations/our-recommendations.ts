@@ -131,7 +131,7 @@ export class OurRecommendationsPage {
     }
     console.log(localStorage.getItem('id'), this.rec_type, this.stock_type_id, this.sector_id);
     this.apiProvider.recommendations(localStorage.getItem('id'), this.rec_type, this.stock_type_id, this.sector_id).subscribe(res => {
-      if (res['STATUS'] == 1) {
+      if (res['STATUS'] == 1 && res['RECOMMENDATIONS'] != undefined) {
         this.recentOurRecommendations = res['RECOMMENDATIONS']['data'].slice(0, 1);
         console.log(this.recentOurRecommendations);
         loading.dismiss();

@@ -14,7 +14,7 @@
             <div class="container">
                <ion-list class="m-b-0">
                  <div *ngFor="let p of pages">
-                   <button menuClose ion-item  class="menu_items" *ngIf="p.login == false || (getLoggedIn() == '1' && p.login == true)"  (click)="openPage(p)">
+                   <button menuClose ion-item  class="menu_items" *ngIf="p.login == false || (getLoggedIn() == '1' && p.login == true) && (getPackage() != '10')"  (click)="openPage(p)">
                     <span>{{ p.title }}</span>
                  </button>
                 </div>

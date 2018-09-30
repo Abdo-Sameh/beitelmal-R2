@@ -70,7 +70,7 @@ export class ReportsPage {
         			});
         		});
         	}
-          fileTransfer.download('http://beitelmal.com/public/reports-files/' + file, 'file:///storage/emulated/0/Downloads/' + file).then((success) => {
+          fileTransfer.download('http://zplankton.net/beit/public/reports-files/' + file, 'file:///storage/emulated/0/Downloads/' + file).then((success) => {
             alert("تم تحميل الملف بنجاح");
             loading.dismiss();
           }).catch((err) => {

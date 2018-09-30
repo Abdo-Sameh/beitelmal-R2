@@ -83,6 +83,10 @@ export class MyApp {
     return localStorage.getItem('loggedIn');
   }
 
+  getPackage() {
+    return JSON.parse(localStorage.getItem('package'));
+  }
+
   toggleGroup(group) {
     if (this.isGroupShown(group)) {
       this.shownGroup = null;

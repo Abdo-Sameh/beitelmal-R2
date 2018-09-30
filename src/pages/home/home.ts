@@ -21,6 +21,7 @@ export class HomePage {
   password
   userData
   loggedIn = "0"
+  package
   subscriber = "0";
   recentPublicRecommendations = []
   recentReports = []
@@ -36,6 +37,7 @@ export class HomePage {
     this.ourRecommendations();
     this.loggedIn = localStorage.getItem('loggedIn');
     this.subscriber = JSON.parse(localStorage.getItem('subscriber'));
+    this.package = JSON.parse(localStorage.getItem('package'));
     $('.menu-icon').removeClass('is-clicked');
     $('.header').removeClass('menu-is-open');
     $('.main-nav').children('ul').removeClass('is-visible');
@@ -85,17 +87,39 @@ export class HomePage {
       spinner: "bubbles"
     });
     loading.present();
-    this.apiProvider.recommendations(localStorage.getItem('id'), 1, "", "").subscribe(res => {
+    this.apiProvider.recommendations(localStorage.getItem('id'), 0, "", "").subscribe(res => {
       console.log(res);
-      if (res['STATUS'] == 1) {
+      if (res['STATUS'] == 1 && res['RECOMMENDATIONS'] != []) {
         console.log(res);
-        this.recentOurRecommendations = res['RECOMMENDATIONS']['data'].slice(0, 1);
+        if(res['RECOMMENDATIONS']['data'].slice(0, 1)[0])
+          this.recentOurRecommendations = res['RECOMMENDATIONS']['data'].slice(0, 1);
         console.log(this.recentOurRecommendations);
         loading.dismiss();
       } else {
         loading.dismiss();
       }
     })
+
+    this.apiProvider.recommendations(localStorage.getItem('id'), 1, "", "").subscribe(res => {
+      console.log(res);
+      if (res['STATUS'] == 1 && res['RECOMMENDATIONS'] != []) {
+        console.log(res);
+        if(res['RECOMMENDATIONS']['data'].slice(0, 1)[0])
+          this.recentOurRecommendations.push(res['RECOMMENDATIONS']['data'].slice(0, 1)[0]);
+        console.log(this.recentOurRecommendations);
+      }
+    })
+
+    this.apiProvider.recommendations(localStorage.getItem('id'), 2, "", "").subscribe(res => {
+      console.log(res);
+      if (res['STATUS'] == 1 && res['RECOMMENDATIONS'] != []) {
+        console.log(res);
+        if(res['RECOMMENDATIONS']['data'].slice(0, 1)[0])
+          this.recentOurRecommendations.push(res['RECOMMENDATIONS']['data'].slice(0, 1)[0]);
+        console.log(this.recentOurRecommendations);
+      }
+    })
+
   }
 
   ourRecommendationsPage(){
