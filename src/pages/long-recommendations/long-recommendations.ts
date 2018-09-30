@@ -54,6 +54,23 @@ export class LongRecommendationsPage {
     this.menu.open();
   }
 
+  clearData() {
+    this.longRecommendations();
+    this.longRecom = [];
+    $('#result').hide();
+    this.data = {
+      "monthName": "",
+      "days1": 0,
+      "days2": 0,
+      "days3": 0,
+      "recommendations_lose": 0,
+      "average_profit": 0,
+      "average_profit_per_unit": 0,
+      "win_rate": 0,
+      "lose_rate": 0
+    }
+  }
+
   logout() {
     this._notificationService.deleteUserToken(localStorage.getItem('id')).subscribe((res) => {
       console.log(res)
