@@ -71,30 +71,30 @@
           <a (click)="ourRecommendationsPage()" class="read-more">إقرأ المزيد</a>
         </div>
         <!-- //block -->
-        <div *ngIf="loggedIn == '1'" class="block">
+        <div *ngIf="loggedIn == '1'" class="block recom">
           <a href="recommend.html" class="absolut-link"></a>
           <h2>أحدث  التقارير</h2>
-          <ul *ngFor="let report of recentReports; let i = index;">
-            <li>{{ report.description }}</li>
+          <ul>
+            <li *ngFor="let report of recentReports; let i = index;">{{ report.description }}</li>
           </ul>
           <a (click)="reportsPage()" class="read-more">إقرأ المزيد</a>
         </div>
         <!-- //block -->
-        <div class="block">
+        <div class="block recom">
           <a href="recommend.html" class="absolut-link"></a>
           <h2>توصيات عامة</h2>
-            <ul *ngFor="let recommend of recentPublicRecommendations; let i = index;">
-            <li>{{ recommend.description }}</li>
+            <ul>
+            <li *ngFor="let recommend of recentPublicRecommendations; let i = index;">
+              {{ recommend.description }}
+            </li>
           </ul>
           <a (click)="recommendationsPage()" class="read-more">إقرأ المزيد</a>
         </div>
       </section>
       <div *ngIf="loggedIn != '1'" class="subscribe">
-        <a (click)="loginPage()">تسجيل الدخول</a>
+        <a (click)="loginPage()">تسجيل الدخول لحسابك</a>
         <h3>أو</h3>
-        <br>
-        <h3>إختر باقتك و إشترك الآن</h3>
-        <a (click)="packagesPage()">إشترك</a>
+        <a (click)="packagesPage()">إختر باقتك و إشترك الآن</a>
       </div>
     </div>
   </main>

@@ -13,10 +13,18 @@
       <div class="col-md-12">
         <div class="missions">
           <h3>تتلخص بعض مهام الشركه فيما يلي</h3>
-          <div *ngFor="let service of services;">
-            <h5>{{ service.service }}</h5>
-            <span>{{ service.description }}</span>
+          <div class="services">
+            <div class="service">
+              <div *ngFor="let service of services;" class="context-serv">
+                <div class="serv-img">
+                  image
+                </div>
+                <h5>{{ service.service }}</h5>
+                <span>{{ service.description }}</span>
+              </div>
+            </div>
           </div>
+          
           <!-- <ul>
             <li>تقديم توصيات وخدمات مالية احترافية لسوق الأسهم .</li>
             <li>دراسة سوق الأسهم المالية بصورة فنية متخصصة .</li>
