@@ -23,7 +23,23 @@ page-long-recommendations {
     border: 1px solid #ebebeb;
     margin-bottom: 10px;
   }
-  li {
+  .result li {
     margin-bottom: 2px;
+    color: #142f4e;
+    padding: 3px 10px;
+    position: relative;
+  }
+  .result li::before {
+    position: absolute;
+    content: '';
+    width: 6px;
+    height: 6px;
+    background-color: #142f4e;
+    right: 0;
+    top: 14px;
+  }
+  .result li strong {
+    color: #e84179;
+    font-size: 150%;
   }
 }
