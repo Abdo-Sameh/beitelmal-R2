@@ -17,57 +17,73 @@
         <div *ngIf="loggedIn == '1' && subscriber == '1' && package != '10'" class="block">
           <a href="recommend.html" class="absolut-link"></a>
           <h2>أحدث التوصيات</h2>
-          <ul *ngFor="let recommend of recentOurRecommendations; let i = index;">
-            <div class="container">
-              <div class="row" id="results">
-                <div class="col-md-3 col-sm-6">
-                  <div class="rec_box">
-                    <header class="equal_rec">
-                      <h5 *ngIf="recommend.status == 0">جديد <i class="fa fa-minus" aria-hidden="true"></i></h5>
-                      <h5 *ngIf="recommend.status == 1">رابح <i class="fa fa-minus" aria-hidden="true"></i></h5>
-                      <h5 *ngIf="recommend.status == 2">وقف خسائر <i class="fa fa-minus" aria-hidden="true"></i></h5>
-                      <h5 *ngIf="recommend.status == 3">البيع بقرب سعر الشراء <i class="fa fa-minus" aria-hidden="true"></i></h5>
-                      <h5 *ngIf="recommend.status == 4">معدله <i class="fa fa-minus" aria-hidden="true"></i></h5>
-                    </header>
+          <div *ngFor="let recommend of recentOurRecommendations; let i = index;">
+              <div class="" id="results">
+                <div class="rec_box">
+                  <header class="equal_rec">
+                    <h5 *ngIf="recommend.status == 0">جديد <i class="fa fa-minus" aria-hidden="true"></i></h5>
+                    <h5 *ngIf="recommend.status == 1">رابح <i class="fa fa-minus" aria-hidden="true"></i></h5>
+                    <h5 *ngIf="recommend.status == 2">وقف خسائر <i class="fa fa-minus" aria-hidden="true"></i></h5>
+                    <h5 *ngIf="recommend.status == 3">البيع بقرب سعر الشراء <i class="fa fa-minus" aria-hidden="true"></i></h5>
+                    <h5 *ngIf="recommend.status == 4">معدله <i class="fa fa-minus" aria-hidden="true"></i></h5>
+                  </header>
 
-                    <ul class="box_body">
-                      <li>
+                  <ul class="box_body">
+                    <li>
+                      <img src="assets/images/business.svg">
+                      <strong>السهم:</strong> 
+                      <span>{{ recommend.recommendation_name }}</span>
+                    </li>
+                    <li>
+                        <img src="assets/images/world.svg">
+                      <strong> السوق : </strong>
+                      <span>{{ recommend.country }}</span>
+                    </li>
+                    <li>
+                        <img src="assets/images/maintenance.svg">
+                      <strong> درجة الشرعية : </strong>
+                      <span *ngIf="recommend.stock_type_id == '0'">شرعى قائمة الفوزان</span>
+                      <span *ngIf="recommend.stock_type_id == '1'">شرعى قائمة الراجحى</span>
+                      <span *ngIf="recommend.stock_type_id == '2'">شرعى قائمة البلاد</span>
+                      <span *ngIf="recommend.stock_type_id == '3'">غير شرعى</span>
+                    </li>
+                    <li>
+                        <img src="assets/images/analytics.svg">
+                      <strong> القطاع : </strong>
+                      <span>{{ recommend.sector }}</span>
+                    </li>
+                    <li>
+                      <img src="assets/images/payment.svg">
+                      <strong>سعر الشراء:</strong>
+                       <span>{{ recommend.buyPrice }}</span>
+                      </li>
+                    <li>
+                        <img src="assets/images/report.svg">
+                      <strong>سعر البيع :</strong> 
+                      <span>{{ recommend.sellPrice }}</span>
+                    </li>
+                    <li>
+                        <img src="assets/images/legal.svg">
+                      <strong>سعر وقف الخسارة :</strong>
+                       <span>{{ recommend.stopLoss }}</span>
+                      </li>
+                    <li>
+                        <img src="assets/images/calendar.svg">
+                      <strong>تاريخ الإنشاء :</strong>
+                      <span>{{ recommend.created2_at }}</span>
+                    </li>
+                    <li>
+                        <img src="assets/images/time.svg">
+                      <strong> تاريخ اّخر تعديل : </strong>
+                      <span>{{ recommend.updated2_at }}</span>
+                    </li>
+                    <li>
                         <span>{{ recommend.description }}</span>
                       </li>
-                      <li><strong>السهم:</strong> <span>{{ recommend.recommendation_name }}</span></li>
-                      <li>
-                        <strong> الدولة : </strong>
-                        <span>{{ recommend.country }}</span>
-                      </li>
-                      <li>
-                        <strong> النوع : </strong>
-                        <span *ngIf="recommend.stock_type_id == '0'">شرعى قائمة الفوزان</span>
-                        <span *ngIf="recommend.stock_type_id == '1'">شرعى قائمة الراجحى</span>
-                        <span *ngIf="recommend.stock_type_id == '2'">شرعى قائمة البلاد</span>
-                        <span *ngIf="recommend.stock_type_id == '3'">غير شرعى</span>
-                      </li>
-                      <li>
-                        <strong> القطاع : </strong>
-                        <span>{{ recommend.sector }}</span>
-                      </li>
-                      <li><strong>سعر الشراء:</strong> <span>{{ recommend.buyPrice }}</span></li>
-                      <li><strong>سعر البيع :</strong> <span>{{ recommend.sellPrice }}</span></li>
-                      <li><strong>سعر وقف الخسارة :</strong> <span>{{ recommend.stopLoss }}</span></li>
-                      <li>
-                        <strong>تاريخ الإنشاء :</strong>
-                        <span>{{ recommend.created2_at }}</span>
-                      </li>
-                      <li>
-                        <strong> تاريخ اّخر تعديل : </strong>
-                        <span>{{ recommend.updated2_at }}</span>
-                      </li>
-
-                    </ul>
-                  </div>
+                  </ul>
                 </div>
               </div>
             </div>
-          </ul>
           <a (click)="ourRecommendationsPage()" class="read-more">إقرأ المزيد</a>
         </div>
         <!-- //block -->
