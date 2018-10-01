@@ -34,8 +34,16 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  openMenu(){
+  openMenu() {
     this.menu.open();
+  }
+
+  homePage() {
+    this.navCtrl.push(HomePage).then(() => {
+      const index = this.navCtrl.getActive().index;
+      console.log(this.navCtrl.getActive());
+      this.navCtrl.remove(0, index);
+    });
   }
 
   login() {
@@ -64,7 +72,7 @@ export class LoginPage {
           console.log(this.navCtrl.getActive());
           this.navCtrl.remove(0, index);
         });
-      }else {
+      } else {
         let toast = this.toastCtrl.create({
           message: result['MESSAGE'],
           duration: 3000,
@@ -78,8 +86,8 @@ export class LoginPage {
   getRemainingDays() {
     console.log(JSON.parse(localStorage.getItem('email')));
     this.apiProvider.remainingDays(JSON.parse(localStorage.getItem('email'))).subscribe(data => {
-      if(data['STATUS'] == 1)
-      this.timer = data['TIMER'];
+      if (data['STATUS'] == 1)
+        this.timer = data['TIMER'];
       console.log(data);
     });
   }
