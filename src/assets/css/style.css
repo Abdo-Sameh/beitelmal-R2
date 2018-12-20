@@ -471,6 +471,8 @@ body {
 .main-content p {
   line-height: 1.4;
   margin: 0.5em 0;
+  color: #444;
+  font-size: 16px;
 }
 @media only screen and (min-width: 1170px) {
   .main-content p {
@@ -885,6 +887,7 @@ xsigin/signup popup
   text-overflow: ellipsis;
   height: 55px;
   float: right;
+  color: #2a2d31;
 }
 .block li:nth-child(even) {
   background-color: #EEE;
@@ -1077,6 +1080,8 @@ xsigin/signup popup
 }
 .cd-pricing-features em {
   position: relative;
+  color: #202a35;
+  font-size: 15px;
 }
 /*.cd-pricing-features em::before {
   position: absolute;
@@ -1724,6 +1729,7 @@ a.btn-show-hide {
   text-overflow: ellipsis;
   overflow: hidden;
   line-height: 1.3;
+  color: #2a2d31;
 }
 .public-recos-item .context a {
   color: #0F3661;
@@ -1756,6 +1762,7 @@ ul.contact {
 }
 ul.contact h3 {
   margin-bottom: 20px;
+  color: #000;
 }
 ul.contact li {
   margin-bottom: 10px;
@@ -1771,6 +1778,7 @@ ul.contact li a {
 }
 .contact-form h3 {
   margin-bottom: 25px;
+  color: #000;
 }
 .contact-form .fieldset {
   margin-bottom: 15px;
@@ -1786,6 +1794,7 @@ ul.contact li a {
   border: 1px solid #e6e6e6;
   padding: 3px;
   height: 30px;
+  color: #777;
 }
 .contact-form textarea {
   display: block;
@@ -1793,6 +1802,7 @@ ul.contact li a {
   min-height: 80px;
   border: 1px solid #e6e6e6;
   padding: 3px;
+  color: #777;
 }
 .contact-form input:focus,
 .contact-form textarea:focus {
@@ -1925,7 +1935,8 @@ ul.contact li a {
 }
 .service .context-serv span {
   text-align: justify;
-  color: #666;
+  color: #464646;
+  font-size: 17px;
 }
 /* .service .context-serv:nth-child(1) .serv-img {
   background-image: url(../images/analysis.png)
@@ -1958,4 +1969,47 @@ ul.contact li a {
 }
 .block.recom li:nth-child(even) {
   background-color: #EEE;
+}
+ion-menu .menu_items {
+  background-color: #142f4e;
+  border-bottom: 1px solid #20436b;
+  color: #FFF;
+}
+ion-menu .menu_items .container {
+  width: 100%;
+}
+
+.list-ios .item-block .item-inner,
+.list-ios > .item-block:first-child {
+  border: none !important;
+}
+.content-ios {
+  color: #fff !important;
+  background-color: #132f4e !important;
+}
+.item-ios {
+  background-color: #132f4e !important;
+  color: #FFF !important;
+}
+.list-ios:nth-child(2) {
+  margin: 0 !important;
+}
+.logout-btn button {
+  background-color: #769ac3 !important;
+  color: #132f4e !important;
+}
+.context-serv h5 {
+  color: #444;
+  font-weight: 700;
+}
+page-long-recommendations select {
+  color: #000;
+}
+.col-rec li {
+  display: block;
+  float: none;
+  height: auto;
+}
+.col-rec li img {
+  top: 12px;
 }
