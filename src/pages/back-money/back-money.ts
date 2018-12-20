@@ -4,21 +4,20 @@ import { HomePage } from '../home/home';
 import { ApiProvider } from './../../providers/api/api';
 import * as $ from "jquery";
 import { NotificationsProvider } from '../../providers/notifications/notifications';
-
 /**
- * Generated class for the AboutUsPage page.
+ * Generated class for the BackMoneyPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
 
 @Component({
-  selector: 'page-about-us',
-  templateUrl: 'about-us.html',
-  providers: [NotificationsProvider]
+  selector: 'page-back-money',
+  templateUrl: 'back-money.html',
 })
-export class AboutUsPage {
-  aboutText
+export class BackMoneyPage {
+
+  backMoneyText = ""
   loggedIn = "0"
   subscriber = "0"
   constructor(public loadingCtrl: LoadingController, public apiProvider: ApiProvider,
@@ -30,7 +29,7 @@ export class AboutUsPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AboutUsPage');
+    console.log('ionViewDidLoad BackMoneyPage');
     let loading = this.loadingCtrl.create({
       spinner: "bubbles"
     });
@@ -40,13 +39,12 @@ export class AboutUsPage {
     });
 
     loading.present();
-    this.apiProvider.about().subscribe(data => {
+    this.apiProvider.backMoney().subscribe(data => {
       console.log(data);
-      this.aboutText = data['ABOUT'][0].description;
+      this.backMoneyText = data['BACKMONEY'][0].description;
       console.log(data);
       loading.dismiss();
     });
-
   }
 
   openMenu() {

@@ -26,6 +26,7 @@ export class LoginPage {
   timer = 0
   loggedIn = "0"
   subscriber = "0";
+  tmp
   constructor(public apiProvider: ApiProvider, public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController,
     private fcm: FcmProvider, private _notificationService: NotificationsProvider, public menu: MenuController) {
   }
@@ -73,8 +74,19 @@ export class LoginPage {
           this.navCtrl.remove(0, index);
         });
       } else {
+        console.log(result);
+        this.tmp = result['ERRORS'];
+        if (this.tmp['email'] && this.tmp['password']) {
+          this.tmp = this.tmp['email'][0] + "\n" + this.tmp['password'][0];
+        }
+
+        else if (this.tmp['email']) {
+          this.tmp = this.tmp['email'][0];
+        } else if (this.tmp['password']) {
+          this.tmp = this.tmp['password'][0];
+        }
         let toast = this.toastCtrl.create({
-          message: result['MESSAGE'],
+          message: this.tmp,
           duration: 3000,
           position: 'bottom'
         });

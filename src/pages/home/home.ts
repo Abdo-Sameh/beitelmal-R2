@@ -89,7 +89,7 @@ export class HomePage {
         if (res['STATUS'] == 1 && res['RECOMMENDATIONS'] != []) {
           console.log(res);
           if (res['RECOMMENDATIONS']['data'].slice(0, 1)[0])
-            this.recentOurRecommendations = res['RECOMMENDATIONS']['data'].slice(0, 1);
+            this.recentOurRecommendations = res['RECOMMENDATIONS']['data'].slice(0, 3);
           console.log(this.recentOurRecommendations);
           loading.dismiss();
         } else {

@@ -40,32 +40,6 @@ export class OurRecommendationsPage {
     this.subscriber = JSON.parse(localStorage.getItem('subscriber'));
     this.package = JSON.parse(localStorage.getItem('package'));
 
-    if (this.package == '11') {
-      let alert = this.alertCtrl.create({
-        title: 'اشتراكك مجانى',
-        message: 'باقتك المجانية تتيح لك استعراض توصية واحدة',
-        buttons: [
-          {
-            text: 'موافق',
-            handler: () => {
-              console.log('Cancel clicked');
-            }
-          },
-          {
-            text: 'طلب ترقية الباقة',
-            handler: () => {
-              console.log('Buy clicked');
-              this.navCtrl.push(ContactUsPage).then(() => {
-                const index = this.navCtrl.getActive().index;
-                this.navCtrl.remove(0, index);
-              });
-            }
-          }
-        ]
-      });
-      alert.present();
-    }
-
     if (this.subscriber != '1') {
       let alert = this.alertCtrl.create({
         title: 'اشتراكك غير صالح',
@@ -94,6 +68,8 @@ export class OurRecommendationsPage {
         ]
       });
       alert.present();
+    }  else{
+        this.ourRecommendations();
     }
   }
 
@@ -124,16 +100,23 @@ export class OurRecommendationsPage {
       spinner: "bubbles"
     });
     loading.present();//recommendations(id, rec_type, stock_type_id, sector_id)
-    if(this.package == '11'){
-      if(this.rec_type != '0'){
-        this.rec_type = "";
-      }
-    }
-    console.log(localStorage.getItem('id'), this.rec_type, this.stock_type_id, this.sector_id);
+    // if(this.package == '11'){
+    //   if(this.rec_type != '0'){
+    //     this.rec_type = "";
+    //   }
+    // }
+
+    console.log(localStorage.getItem('id'), "", "", "");
     this.apiProvider.recommendations(localStorage.getItem('id'), this.rec_type, this.stock_type_id, this.sector_id).subscribe(res => {
-      if (res['STATUS'] == 1 && res['RECOMMENDATIONS'] != undefined) {
-        this.recentOurRecommendations = res['RECOMMENDATIONS']['data'].slice(0, 1);
+          console.log(res);
+      if (res['STATUS'] == 1 && res['RECOMMENDATIONS'] != undefined && this.package == '11') {
+        this.recentOurRecommendations = res['RECOMMENDATIONS']['data'];
+
+        // this.recentOurRecommendations = res['RECOMMENDATIONS']['data'].slice(0, 1);
         console.log(this.recentOurRecommendations);
+        loading.dismiss();
+      } else if(res['STATUS'] == 1 && res['RECOMMENDATIONS'] != undefined) {
+        this.recentOurRecommendations = res['RECOMMENDATIONS']['data'];
         loading.dismiss();
       } else {
         this.recentOurRecommendations = []

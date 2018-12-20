@@ -148,6 +148,10 @@ export class ApiProvider {
     return this.http.get(this.serverURL + '/api/' + 'v1/respons').map((res: any) => res.json());
   }
 
+  backMoney() {
+    return this.http.get(this.serverURL + '/api/' + 'v1/backmoney').map((res: any) => res.json());
+  }
+
   remainingDays(email) {
     return this.http.get(this.serverURL + '/api/' + 'v1/remaining?email=' + email).map((res: any) => res.json());
   }

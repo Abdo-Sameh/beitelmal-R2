@@ -14,8 +14,8 @@
 
   <main class="main-content">
     <div class="container">
-      <ion-title>نوع التوصية</ion-title>
-      <ion-list radio-group [(ngModel)]="rec_type" (ngModelChange)="ourRecommendations()">
+      <ion-title *ngIf="package != 11">نوع التوصية</ion-title>
+      <ion-list *ngIf="package != 11" radio-group [(ngModel)]="rec_type" (ngModelChange)="ourRecommendations()">
         <ion-item>
           <ion-label>مضاربية</ion-label>
           <ion-radio *ngIf="package == '11'" value="0" checked></ion-radio>
@@ -32,7 +32,7 @@
 
       </ion-list>
 
-      <ion-list class="choose-sector">
+      <ion-list *ngIf="package != 11" class="choose-sector">
         <ion-item>
           <ion-label>القطاع</ion-label>
           <ion-select [(ngModel)]="sector_id" [selectOptions]="selectOptions" (ngModelChange)="ourRecommendations()" okText="موافق" cancelText="الغاء">
