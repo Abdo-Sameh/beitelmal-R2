@@ -27,11 +27,11 @@ html {
 body{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-font-family: 'JFFlat-Regular', sans-serif;
+  /* -webkit-font-family: 'JFFlat-Regular', sans-serif;
   -moz-font-family: 'JFFlat-Regular', sans-serif;
   -ms-font-family: 'JFFlat-Regular', sans-serif;
   -o-font-family: 'JFFlat-Regular', sans-serif;
-  font-family: 'JFFlat-Regular', sans-serif;
+  font-family: 'JFFlat-Regular', sans-serif; */
   font-weight: normal;
   font-size: 100%;
   color: rgba(2, 23, 37, 0.7);
