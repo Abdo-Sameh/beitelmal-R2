@@ -21,6 +21,7 @@ import { RegisterationPage } from '../pages/registeration/registeration';
 import { LoginPage } from '../pages/login/login';
 import { TermsPage } from '../pages/terms/terms';
 import { PolicyPage } from '../pages/policy/policy';
+import { BackMoneyPage } from '../pages/back-money/back-money';
 import { ResponsPage } from '../pages/respons/respons';
 import { ApiProvider } from '../providers/api/api';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
@@ -56,6 +57,7 @@ var firebase = {
     ResponsPage,
     TermsPage,
     PolicyPage,
+    BackMoneyPage,
     ShortRecommendationsPage,
     OurRecommendationsPage
   ],
@@ -83,6 +85,7 @@ var firebase = {
     ResponsPage,
     TermsPage,
     PolicyPage,
+    BackMoneyPage,
     RegisterationPage,
     ShortRecommendationsPage,
     OurRecommendationsPage,

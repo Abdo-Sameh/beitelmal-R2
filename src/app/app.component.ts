@@ -11,6 +11,7 @@ import { PackagesPage } from '../pages/packages/packages';
 import { ServicesPage } from '../pages/services/services';
 import { TermsPage } from '../pages/terms/terms';
 import { PolicyPage } from '../pages/policy/policy';
+import { BackMoneyPage } from '../pages/back-money/back-money';
 import { ResponsPage } from '../pages/respons/respons';
 import { LongRecommendationsPage } from '../pages/long-recommendations/long-recommendations';
 import { ShortRecommendationsPage } from '../pages/short-recommendations/short-recommendations';
@@ -76,6 +77,8 @@ export class MyApp {
       { title: 'الشروط والأحكام', component: TermsPage, login: false },
       { title: 'سياسة الموقع', component: PolicyPage, login: false },
       { title: 'إخلاء المسؤلية', component: ResponsPage, login: false },
+      { title: 'سياسة رد الأموال', component: BackMoneyPage, login: false },
+
     ];
   }
 
