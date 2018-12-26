@@ -471,6 +471,7 @@ body {
 .main-content p {
   line-height: 1.4;
   margin: 0.5em 0;
+  color: #444;
 }
 @media only screen and (min-width: 1170px) {
   .main-content p {
@@ -1958,4 +1959,61 @@ ul.contact li a {
 }
 .block.recom li:nth-child(even) {
   background-color: #EEE;
+}
+.rec_box ul li {
+  float: none;
+  display: block;
+  padding: 5px 28px 5px 5px;
+  height: auto;
+}
+ion-menu .menu-inner,
+.menu-inner > ion-header, .menu-inner > ion-content, .menu-inner > ion-footer {
+  background: #132f4e !important;
+}
+.menu_items {
+
+}
+.menu_items .container {
+  width: 100%;
+}
+.menu_items ion-list.list:nth-child(2) .item-block {
+  padding: 0;
+  color: #fff;
+  background-color: #132f4e;
+}
+.menu_items ion-list.list:nth-child(2) .row {
+  display: block;
+}
+.menu_items ion-list.list:nth-child(2) .item-block .item-inner {
+
+}
+.menu_items ion-list.list:nth-child(2) ion-label {
+  margin: 0;
+}
+.menu_items.item-block{
+  padding: 0 !important;
+  background-color: #142f4e;
+  color: #fff;
+}
+.menu_items.item-block .item-inner {
+  border-bottom: 0.55px solid #284667 !important;
+}
+page-our-recommendations ion-item.item-block {
+  margin-bottom: 5px;
+  background-color: #132f4e;
+  color: #FFF;
+  padding-left: 0;
+  border: none;
+}
+page-our-recommendations ion-title {
+  margin-bottom: 20px;
+}
+page-our-recommendations ion-title .toolbar-title {
+  overflow: visible;
+}
+page-our-recommendations item-radio {
+  padding-left: 0;
+}
+.logout-btn button {
+  background-color: #e84178 !important;
 }
