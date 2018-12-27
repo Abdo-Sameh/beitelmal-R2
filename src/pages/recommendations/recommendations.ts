@@ -89,7 +89,7 @@ export class RecommendationsPage {
         			});
         		});
         	}
-          fileTransfer.download('http://zplankton.net/beit/public/uploads-files/' + file, 'file:///storage/emulated/0/Downloads/' + file).then((success) => {
+          fileTransfer.download('http://zplankton.net/beit/public/uploads-files/' + encodeURI(file), 'file:///storage/emulated/0/Downloads/' + file).then((success) => {
             alert("تم تحميل الملف بنجاح");
             loading.dismiss();
           }).catch((err) => {

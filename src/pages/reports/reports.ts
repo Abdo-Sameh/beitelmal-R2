@@ -30,6 +30,7 @@ export class ReportsPage {
     this.getReports();
     this.loggedIn = localStorage.getItem('loggedIn');
     this.subscriber = localStorage.getItem('subscriber');
+    // console.log(encodeURI("yes no as"));
   }
 
   ionViewDidLoad() {
@@ -70,12 +71,15 @@ export class ReportsPage {
         			});
         		});
         	}
-          fileTransfer.download('http://zplankton.net/beit/public/reports-files/' + file, 'file:///storage/emulated/0/Downloads/' + file).then((success) => {
+          fileTransfer.download('http://zplankton.net/beit/public/reports-files/' + encodeURI(file), 'file:///storage/emulated/0/Downloads/' + file).then((success) => {
             alert("تم تحميل الملف بنجاح");
             loading.dismiss();
           }).catch((err) => {
             loading.dismiss();
-            // alert(err);
+            // alert(err.body);
+            // alert(err.target);
+            // alert(err.exception);
+
             alert('فشل تحميل الملف');
           });
         }
